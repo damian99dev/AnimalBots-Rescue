@@ -1,8 +1,16 @@
+import pygame, sys #importo las librerias
+from pygame.math import Vector2 as vector
 
+window_width, window_height = 1024, 800 #creamos el alto y ancho de la pantalla
+tile_size = 32
+animation_speed = 6
 
-class Settings:
-    def __init__(self):
-        self.screen_width = 1920
-        self.screen_height = 1080
-        self.bg_color = (31, 30, 30)
-        self.fps = 60
+z_layers = {
+    'bg': 0,
+    'clouds': 1,
+    'bg tiles': 2,
+    'path': 2,
+    'bg details': 4,
+    'main': 5,
+    'fg': 7,
+}

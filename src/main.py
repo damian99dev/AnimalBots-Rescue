@@ -1,6 +1,7 @@
 from settings import * #importo los ajustes de settings
 from level import Level
 from pytmx.util_pygame import load_pygame
+from pathlib import Path
 
 class Game:
     def __init__(self):
@@ -9,7 +10,9 @@ class Game:
         pygame.display.set_caption('AnimalBot Rescue') #Le ponemos nombre a la ventana
         self.clock = pygame.time.Clock()
 
-        self.tmx_maps = {0: load_pygame('C:/Users/GAMER/Proyecto Integrador #3/data/tmx/prueba.tmx')}
+        base_path = Path(__file__).parent
+        tmx_path = base_path / '..' / 'data' / 'tmx' / 'prueba.tmx'
+        self.tmx_maps = {0: load_pygame(str(tmx_path))}
         self.current_stage = Level(self.tmx_maps[0])
 
     def run(self):

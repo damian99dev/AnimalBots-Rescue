@@ -4,7 +4,7 @@ import os
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, groups, collision_sprite):
         super().__init__(groups)
-         # Ruta relativa para cargar la imagen 'mona china 1.png'
+        # Ruta relativa para cargar la imagen 'mona china 1.png'
         base_path = os.path.dirname(__file__)  # Directorio donde está player.py
         img_path = os.path.join(base_path, '..', 'graphics', 'Protagonist', 'mona china 1.png')
 
@@ -12,7 +12,7 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.image.load(img_path).convert_alpha()
 
         #Rectangulos
-        self.rect = self.image.get_frect(topleft = pos)
+        self.rect = self.image.get_rect(topleft = pos)
         self.old_rect = self.rect.copy()
 
 

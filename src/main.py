@@ -358,7 +358,7 @@ def main_menu():
     # Obtener tamaño de la pantalla
     screen_width, screen_height = pygame.display.get_surface().get_size()
 
-    # Cargar la imagen "AMF CORP"
+    # Cargar la imagen "AMF CORP"!!  
     amf_corp_image = pygame.image.load("assets/images/ui/AMF CORP.png").convert_alpha()
     amf_corp_width, amf_corp_height = amf_corp_image.get_size()
 

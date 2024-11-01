@@ -3,9 +3,8 @@ from level import Level                     # Importa la clase Level para maneja
 from pytmx.util_pygame import load_pygame   # Carga los mapas .tmx con soporte para Pygame
 from pathlib import Path                    # Manejo de rutas de archivos de manera flexible
 import pygame, sys                          # Importa Pygame para el motor del juego y sys para la gestión del sistema
-from button import Button                   # Importa la clase Button para todos los botones del menú                 # Importa la función main_menu para el menú principal
+from button import Button                   # Importa la clase Button para todos los botones del menú
 from game_over import GameOverScreen
-
 
 pygame.init()
 
@@ -32,17 +31,18 @@ def get_font(size):                                                 # Función p
     return pygame.font.Font("assets/fonts/gameovercre1.ttf", size)
 
 class Game:
-    def __init__(self, level_number):
+    def __init__(self, tmx_file):
+        pygame.init()
         self.display_surface = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)
-        pygame.display.set_caption('AnimalBot Rescue')
+        pygame.display.set_caption("AnimalBot Rescue")
         self.clock = pygame.time.Clock()
 
         # Carga el mapa .tmx correspondiente al nivel
         base_path = Path(__file__).parent
-        tmx_path = base_path / '..' / 'data' / 'tmx' / 'prueba.tmx'
+        tmx_path = base_path / '..' / 'data' / 'tmx' / tmx_file
         self.tmx_maps = {0: load_pygame(str(tmx_path))}
     
-        self.current_stage = Level(self.tmx_maps[level_number])
+        self.current_stage = Level(self.tmx_maps[0])
 
         self.paused = False  # Controla el estado de pausa
     
@@ -50,6 +50,10 @@ class Game:
         self.timer = 60
         self.font = get_font(50)  # Usa la misma fuente con un tamaño de 50
         self.start_time = pygame.time.get_ticks()  # Tiempo al que se inicia el juego
+
+        # Reproducir música del nivel
+        pygame.mixer.music.load("assets\sounds\music\Hypertext.mp3")
+        pygame.mixer.music.play(-1)
 
     def run(self):
         while True:
@@ -93,49 +97,28 @@ class Game:
             pygame.display.update()
 
     def update_timer(self):
-    # Calcula el tiempo transcurrido
+        # Calcula el tiempo transcurrido
         elapsed_time = (pygame.time.get_ticks() - self.start_time) / 1000  # Convertir a segundos
         remaining_time = max(0, self.timer - elapsed_time)  # Asegurarse que no sea negativo
 
-    # Muestra el temporizador en pantalla solo con los números
+        # Muestra el temporizador en pantalla solo con los números
         timer_text = self.font.render(f'{int(remaining_time)}', True, "White")
         timer_rect = timer_text.get_rect(center=(SCREEN.get_width() // 2, 50))  # Centrado horizontalmente
 
         SCREEN.blit(timer_text, timer_rect)
 
-    # Si el tiempo llega a 0, activa la pantalla de Game Over
+        # Si el tiempo llega a 0, activa la pantalla de Game Over
         if remaining_time <= 0:
             self.game_over()
 
     def game_over(self):
-    # Crear instancia de la pantalla de Game Over
-        
+        # Crear instancia de la pantalla de Game Over
         SCREEN = pygame.display.set_mode((1920, 1080))
         game_over_screen = GameOverScreen(SCREEN, self.font)
-    # Mostrar la pantalla de Game Over y manejar la lógica de reinicio/salida
+        # Mostrar la pantalla de Game Over y manejar la lógica de reinicio/salida
         while True:
-        # Ejecutar la pantalla de Game Over
+            # Ejecutar la pantalla de Game Over
             game_over_screen.run()  # Llama al método run() de GameOverScreen
-
-        #
-
-    def update_timer(self):
-    # Calcula el tiempo transcurrido
-        elapsed_time = (pygame.time.get_ticks() - self.start_time) / 1000  # Convertir a segundos
-        remaining_time = max(0, self.timer - elapsed_time)  # Asegurarse que no sea negativo
-
-    # Muestra el temporizador en pantalla solo con los números
-        timer_text = self.font.render(f'{int(remaining_time)}', True, "White")
-        timer_rect = timer_text.get_rect(center=(SCREEN.get_width() // 2, 50))  # Centrado horizontalmente
-
-        SCREEN.blit(timer_text, timer_rect)
-
-    # Si el tiempo llega a 0, activa la pantalla de Game Over
-        if remaining_time <= 0:
-            self.game_over()
-
-    
-
 
     def show_pause_menu(self):
         # Muestra el menú de pausa
@@ -145,7 +128,7 @@ class Game:
         SCREEN.blit(pause_text, pause_rect)
 
         # Crear botones de reanudar, salir, volver al menú principal y abrir opciones
-        puased_button = Button(image=pygame.image.load("assets/images/ui/paused_bt.png"), pos=(SCREEN.get_width() // 2.01, SCREEN.get_height() // 2 + -200),
+        paused_button = Button(image=pygame.image.load("assets/images/ui/paused_bt.png"), pos=(SCREEN.get_width() // 2.01, SCREEN.get_height() // 2 - 200),
                             text_input="", font=get_font(50), base_color="Green", hovering_color="Green")
         resume_button = Button(image=pygame.image.load("assets/images/ui/tabla_resume_bt.png"), pos=(SCREEN.get_width() // 2, SCREEN.get_height() // 2),
                             text_input="RESUME", font=get_font(50), base_color="#361612", hovering_color="Green")
@@ -156,7 +139,7 @@ class Game:
 
         # Cambiar color de los botones al pasar el mouse
         mouse_pos = pygame.mouse.get_pos()
-        for button in [puased_button,resume_button, main_menu_button, quit_button]:
+        for button in [paused_button, resume_button, main_menu_button, quit_button]:
             button.changeColor(mouse_pos)
             button.update(SCREEN)
 
@@ -172,16 +155,14 @@ class Game:
                 elif main_menu_button.checkForInput(mouse_pos):
                     pygame.mixer.music.load("assets/sounds/music/Main Menu.mp3")
                     pygame.mixer.music.play(-1, fade_ms=3000)
-                    main_menu()  # Vuelve al menú principa
+                    main_menu()  # Vuelve al menú principal
                 elif quit_button.checkForInput(mouse_pos):
                     pygame.quit()  # Cierra Pygame
                     sys.exit()  # Cierra el sistema
 
-
 def play():
     # Pantalla de selección de niveles
     while True:
-        
         # Obtener tamaño de la pantalla
         screen_width, screen_height = pygame.display.get_surface().get_size()
         SCREEN.blit(BG, (0, 0))  # Establecer fondo del menú de selección de niveles
@@ -200,13 +181,13 @@ def play():
         LEVEL_3_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(screen_width // 2, screen_height // 2 + 300), 
                                 text_input="ADVANCED", font=get_font(75), base_color="#361612", hovering_color="#ff0031")
         BACK_BUTTON = Button(image=None, pos=(screen_width // 7, screen_height // 7 + 650), 
-                            text_input="BACK", font=get_font(55), base_color="White", hovering_color="Green",)
-        
+                            text_input="BACK", font=get_font(55), base_color="White", hovering_color="Green")
 
         # Cambiar color del botón si el mouse pasa sobre él
         for button in [LEVEL_1_BUTTON, LEVEL_2_BUTTON, LEVEL_3_BUTTON, BACK_BUTTON]:
             button.changeColor(LEVEL_MOUSE_POS)
             button.update(SCREEN)
+
         # Detectar eventos del mouse para cada botón
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -214,17 +195,14 @@ def play():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if LEVEL_1_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    
-                    pygame.mixer.music.stop() # Detener la música del menú principal
-                    pygame.mixer.music.load("assets/sounds/music/Hypertext.mp3") # Reproduce la música del nivel 1 al darle al boton level 1
-                    pygame.mixer.music.play(-1, fade_ms=3000)
-    
-                    game = Game(0)  # Cargar el nivel 1
+                    game = Game('prueba.tmx')  # Cargar el nivel 1
                     game.run()
                 elif LEVEL_2_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    print("Level 2 not yet implemented")  # Niveles aún no implementados
+                    game = Game('prueba2.tmx')  # Cargar el nivel 2
+                    game.run()
                 elif LEVEL_3_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    print("Level 3 not yet implemented")
+                    game = Game('prueba3.tmx')  # Cargar el nivel 3
+                    game.run()
                 elif BACK_BUTTON.checkForInput(LEVEL_MOUSE_POS):
                     main_menu()  # Volver al menú principal
 
@@ -414,4 +392,3 @@ def main_menu():
 
 # Llama al menú principal cuando el juego se ejecuta
 main_menu()
-

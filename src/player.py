@@ -87,7 +87,7 @@ class Player(pygame.sprite.Sprite):
         
         if keys[pygame.K_SPACE]:
             self.jump = True
-
+            
     def move(self, dt):
         # Movimiento horizontal
         self.hitbox_rect.x += self.direction.x * self.speed * dt

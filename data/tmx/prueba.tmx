@@ -155,7 +155,7 @@
   <object id="2" name="player" gid="1" x="848" y="1092" width="32" height="32"/>
   <object id="121" name="meta" gid="4900" x="3360" y="1504" width="32" height="32"/>
  </objectgroup>
- <objectgroup id="4" name="Enemies" visible="0">
+ <objectgroup id="4" name="Enemies">
   <object id="7" name="Vaca" gid="2" x="1568" y="1504" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="5" name="Backgtras">

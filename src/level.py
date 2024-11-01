@@ -46,7 +46,7 @@ class Level:
         self.load_background_objects(tmx_map)
 
     def load_background_objects(self, tmx_map):
-    # Cargamos la capa de objetos traspasables como 'arbol', 'mig', 'jos', 'dam', 'gre', 'rox', 'nao'
+        # Cargamos la capa de objetos traspasables 
         backgtras_layer = tmx_map.get_layer_by_name('Backgtras')
         if backgtras_layer:
             for obj in backgtras_layer:
@@ -63,7 +63,6 @@ class Level:
                     object_image = pygame.image.load(image_path).convert_alpha()
                     object_image = pygame.transform.scale(object_image, (obj.width, obj.height))
                     Sprite((obj.x, obj.y), object_image, self.all_sprites)  # Agregar al grupo all_sprites (sin colisiones)
-    # Solo agregar al grupo all_sprites, no a colisiones
 
     def run(self, dt):
         # Dibujamos el fondo si está cargado

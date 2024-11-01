@@ -50,16 +50,9 @@ class Level:
         backgtras_layer = tmx_map.get_layer_by_name('Backgtras')
         if backgtras_layer:
             for obj in backgtras_layer:
-                if obj.name == 'arbol':
-                    # Crear un sprite sin colisión para el árbol
-                    tree_image = pygame.image.load('graphics/Background/arbol.png').convert_alpha()  # Asegúrate de tener esta imagen en la ruta correcta
-                    tree_image = pygame.transform.scale(tree_image, (obj.width, obj.height))
-                    Sprite((obj.x, obj.y), tree_image, self.all_sprites)  # Agregar al grupo all_sprites (sin colisiones)
-
-                # Agregar objetos traspasables adicionales
-                elif obj.name in ['mig', 'jos', 'dam', 'gre', 'rox', 'nao']:
+                if obj.name in ['arbol', 'mig', 'jos', 'dam', 'gre', 'rox', 'nao', 'flechaa', 'flechab', 'derecha', 'arbu', 'arbust', 'rocab', 'rocag', 'pa', 'st']:
                     # Ruta a las imágenes correspondientes para cada objeto
-                    image_path = f'graphics/Background/{obj.name}.png'  # Asegúrate de tener las imágenes en la carpeta 'graphics/objects'
+                    image_path = f'graphics/Background/{obj.name}.png'  # Asegúrate de tener las imágenes en la carpeta 'graphics/Background'
                     object_image = pygame.image.load(image_path).convert_alpha()
                     object_image = pygame.transform.scale(object_image, (obj.width, obj.height))
                     Sprite((obj.x, obj.y), object_image, self.all_sprites)  # Agregar al grupo all_sprites (sin colisiones)

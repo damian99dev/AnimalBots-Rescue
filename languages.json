@@ -1,0 +1,36 @@
+{
+    "en": {
+        "play": "PLAY",
+        "options": "OPTIONS",
+        "exit": "EXIT",
+        "back": "BACK",
+        "music_volume": "Music Volume",
+        "options_title": "OPTIONS",
+        "beginner": "Beginner",
+        "resume": "PLAY",
+        "menu": "MENU",
+        "medium": "Medium",
+        "advanced": "Advanced",
+        "back2": "Back",
+        "game_over": "GAME OVER",
+        "level_text": "SELELCT LEVEL",
+        "victory": "YOU WON! :D"
+    },
+    "es": {
+        "play": "JUGAR",
+        "options": "OPCIONES",
+        "exit": "SALIR",
+        "back": "ATRÁS",
+        "music_volume": "Volumen de Música",
+        "options_title": "OPCIONES",
+        "beginner": "Principiante",
+        "resume": "JUGAR",
+        "menu": "MENÚ",
+        "medium": "Medio",
+        "advanced": "Avanzado",
+        "back2": "Volver",
+        "game_over": "JUEGO TERMINADO",
+        "level_text": "SELECCIONA NIVEL",
+        "victory": "¡GANASTE! :D"
+    }
+}

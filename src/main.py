@@ -5,3 +5,5 @@ from main_menu import main_menu
 pygame.init()
 # Llama al menú principal cuando el juego se ejecuta
 main_menu()
+
+#rayos esta desnudo

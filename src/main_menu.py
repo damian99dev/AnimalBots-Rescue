@@ -7,9 +7,12 @@ from button import Button                   # Importa la clase Button para todos
 from game_over import GameOverScreen
 from options_menu import get_text
 import json
-
+import cv2  # Importar OpenCV
 
 pygame.init()
+
+video_path = "assets/images/backgrounds/menu.mp4"   # Carga el video con OpenCV
+cap = cv2.VideoCapture(video_path)
 
 music_playing = False                                                   # Variable global para controlar si la música del menú ya está sonando
 PAUSE_SOUND = pygame.mixer.Sound("assets/sounds/fx/pause.mp3")          # Cargar el sonido de pausa
@@ -58,9 +61,27 @@ def main_menu():
     beta_font = get_font(30) 
     beta_text = beta_font.render("VERSION 2.1.0", True, (255, 255, 255)) 
     beta_text_rect = beta_text.get_rect(topleft=(10, screen_height - 40))
+
     # Menú principal
+    
     while True:
-        SCREEN.blit(BG, (0, 0))  # Establecer fondo del menú
+        ret, frame = cap.read()
+        if not ret:  # Si el video ha terminado, reinícialo
+            cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+            ret, frame = cap.read()
+
+        # Convierte el frame de BGR (formato de OpenCV) a RGB (formato de Pygame)
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+        # Ajusta el tamaño del frame a la resolución de la pantalla completa
+        frame = cv2.resize(frame, (1820, 920))  # resolución de pantalla 
+        frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+
+        # Convierte el frame en una superficie de Pygame y dibújalo en la pantalla
+        frame_surface = pygame.surfarray.make_surface(frame)
+        SCREEN.blit(frame_surface, (0, 0))
+
+
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
         # Texto del título del menú
@@ -107,4 +128,3 @@ def main_menu():
         pygame.display.update()
 
 # Llama al menú principal cuando el juego se ejecuta
-

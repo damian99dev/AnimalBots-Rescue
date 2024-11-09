@@ -4,28 +4,17 @@ from button import Button                   # Importa la clase Button para todos
 from game_class import Game
 from options_menu import get_text
 import json
+import cv2  # Importar OpenCV
 
 pygame.init()
 
+video_path = "assets/images/backgrounds/menu.mp4"   # Carga el video con OpenCV
+cap = cv2.VideoCapture(video_path)
+
 music_playing = False                                                   # Variable global para controlar si la música del menú ya está sonando
-PAUSE_SOUND = pygame.mixer.Sound("assets/sounds/fx/pause.mp3")          # Cargar el sonido de pausa
 
 SCREEN = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)       # Cambiado a pantalla completa
 pygame.display.set_caption("AnimalBots Rescue")
-
-BG = pygame.image.load("assets/images/backgrounds/menu.jpg")            # Carga la imagen de fondo del menú
-BG = pygame.transform.scale(BG, (1820, 920))                           # Escala la imagen al tamaño de la pantalla
-
-PAUSE_BUTTON_IMAGE = pygame.image.load("assets/images/ui/pause_bt.png")
-PAUSE_BUTTON_IMAGE = pygame.transform.scale(PAUSE_BUTTON_IMAGE, (int(PAUSE_BUTTON_IMAGE.get_width() * 1.9),  # Ajusta el tamaño del botón de pausa
-                                                                 int(PAUSE_BUTTON_IMAGE.get_height() * 1.9)))
-PAUSE_BUTTON_RECT = PAUSE_BUTTON_IMAGE.get_rect(topleft=(1440, 10))       # Coloca en la esquina superior izquierda
-
-HEALTH_BAR_IMAGE = pygame.image.load("graphics/ui/game_elements/corazones daño3.png")
-HEALTH_BAR_IMAGE = pygame.transform.scale(HEALTH_BAR_IMAGE, (int(HEALTH_BAR_IMAGE.get_width() * 0.3),  # Ajusta el tamaño de la barra de salud
-                                                               int(HEALTH_BAR_IMAGE.get_height() * 0.3)))
-HEALTH_BAR_POS = HEALTH_BAR_IMAGE.get_rect(topleft=(-50, -50))      # Coloca en la esquina superior izquierda
-
 
 def get_font(size):                                                 # Función para obtener la fuente con un tamaño específico
     return pygame.font.Font("assets/fonts/font1.otf", size)
@@ -39,7 +28,26 @@ def play():
     while True:
         # Obtener tamaño de la pantalla
         screen_width, screen_height = pygame.display.get_surface().get_size()
-        SCREEN.blit(BG, (0, 0))  # Establecer fondo del menú de selección de niveles
+        ret, frame = cap.read()
+        if not ret:  # Si el video ha terminado, reinícialo
+            cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+            ret, frame = cap.read()
+
+        # Convierte el frame de BGR (formato de OpenCV) a RGB (formato de Pygame)
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+        # Ajusta el tamaño del frame a la resolución de la pantalla completa
+        frame = cv2.resize(frame, (1820, 920))  # resolución de pantalla 
+        frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+
+        # Convierte el frame en una superficie de Pygame y dibújalo en la pantalla
+        frame_surface = pygame.surfarray.make_surface(frame)
+        SCREEN.blit(frame_surface, (0, 0))
+
+   
+        
+        
+          # Establecer fondo del menú de selección de niveles
         LEVEL_MOUSE_POS = pygame.mouse.get_pos()
 
         # Texto para la selección de nivel

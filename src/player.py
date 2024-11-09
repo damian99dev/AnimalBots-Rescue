@@ -101,7 +101,7 @@ class Player(pygame.sprite.Sprite):
 
         if self.jump:
             if self.on_surface['Suelo']:
-                self.direction.y = -self.jump_dist
+                self.direction.y = -self.jump_dist  # El jugador salta
             self.jump = False
 
         self.rect.center = self.hitbox_rect.center

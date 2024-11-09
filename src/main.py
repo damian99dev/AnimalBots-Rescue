@@ -1,9 +1,5 @@
-from settings import *                      # Importa todas las configuraciones desde el archivo settings
+import pygame                     
 from main_menu import main_menu
 
-# Inicia Pygame para el motor del juego
-pygame.init()
-# Llama al menú principal cuando el juego se ejecuta
-main_menu()
-
-#rayos esta desnudo
+pygame.init()  # Inicia Pygame para el motor del juego
+main_menu() # Llama al menú principal y partiendo de ahí, el juego se ejecuta

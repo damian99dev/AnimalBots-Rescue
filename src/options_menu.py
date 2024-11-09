@@ -2,8 +2,12 @@ from settings import *                      # Importa todas las configuraciones 
 import pygame, sys                          # Importa Pygame para el motor del juego y sys para la gestión del sistema
 from button import Button                   # Importa la clase Button para todos los botones del menú
 import json
+import cv2  # Importar OpenCV
 
 pygame.init()
+
+video_path = "assets/images/backgrounds/menu.mp4"   # Carga el video con OpenCV
+cap = cv2.VideoCapture(video_path)
 
 SCREEN = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)       # Cambiado a pantalla completa
 pygame.display.set_caption("AnimalBots Rescue")
@@ -97,7 +101,23 @@ def options():
                              text_input=language_text, font=get_font(55), base_color="White", hovering_color="#b00035")
 
     while True:
-        SCREEN.blit(BG, (0, 0))
+        ret, frame = cap.read()
+        if not ret:  # Si el video ha terminado, reinícialo
+            cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+            ret, frame = cap.read()
+
+        # Convierte el frame de BGR (formato de OpenCV) a RGB (formato de Pygame)
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+        # Ajusta el tamaño del frame a la resolución de la pantalla completa
+        frame = cv2.resize(frame, (1820, 920))  # resolución de pantalla 
+        frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+
+        # Convierte el frame en una superficie de Pygame y dibújalo en la pantalla
+        frame_surface = pygame.surfarray.make_surface(frame)
+        SCREEN.blit(frame_surface, (0, 0))
+
+
         OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
 
         # Renderizar título, botones, etiqueta de volumen y slider

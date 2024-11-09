@@ -72,7 +72,7 @@ class Level:
     
         # Actualizamos y dibujamos los sprites con la cámara ajustada al jugador
         self.all_sprites.update(dt)
-        self.all_sprites.draw(self.player.hitbox_rect.center)  # Aquí se usa el centro del jugador para centrar la cámara
+        self.all_sprites.draw(self.player.hitbox_rect.center, self.player)  # Aquí se usa el centro del jugador para centrar la cámara
 
         self.display_surface.blit(self.meta_image, self.meta_pos)
         for fin_rect, fin_image, fin_pos in self.fin_objects:

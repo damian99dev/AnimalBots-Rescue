@@ -1,7 +1,7 @@
 import pygame, sys #importo las librerias
 from pygame.math import Vector2 as vector
 
-window_width, window_height = 1024, 1024 #creamos el alto y ancho de la pantalla
+window_width, window_height = 1920, 1080 #creamos el alto y ancho de la pantalla
 tile_size = 32
 animation_speed = 6
 

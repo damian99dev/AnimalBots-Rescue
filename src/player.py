@@ -24,7 +24,7 @@ class Player(pygame.sprite.Sprite):
         
         # Rectángulos
         self.rect = self.image.get_rect(topleft=pos)
-        self.hitbox_rect = self.rect.inflate(0, 0)
+        self.hitbox_rect = self.rect.inflate(-3, -3)
         self.old_rect = self.hitbox_rect.copy()
 
         # Movimiento del personaje
@@ -101,7 +101,7 @@ class Player(pygame.sprite.Sprite):
 
         if self.jump:
             if self.on_surface['Suelo']:
-                self.direction.y = -self.jump_dist
+                self.direction.y = -self.jump_dist  # El jugador salta
             self.jump = False
 
         self.rect.center = self.hitbox_rect.center

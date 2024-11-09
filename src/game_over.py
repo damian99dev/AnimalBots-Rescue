@@ -1,24 +1,26 @@
 import pygame
 import sys
 from button import Button  # Asegúrate de tener la clase Button
+from options_menu import get_text
 import json
 
 # Funciones para cargar y guardar la configuración
 def load_config():
     try:
-        with open('config.json', 'r') as f:
+        with open('config_music.json', 'r') as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         return {"music_volume": 0.5}  # Valores predeterminados
 
 def save_config(music_volume):
-    with open('config.json', 'w') as f:
+    with open('config_music.json', 'w') as f:
         json.dump({"music_volume": music_volume}, f)
 
 # Inicializar Pygame y la pantalla
 pygame.init()
-SCREEN = pygame.display.set_mode((1920, 1080))
+SCREEN = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)
 pygame.display.set_caption("Game Over!")
+
 
 # Cargar música de Game Over
 GAMEOVER_MUSIC = pygame.mixer.Sound("assets/sounds/music/Death is only the beginning.mp3")
@@ -34,9 +36,12 @@ def set_volume(sound, volume):
 config = load_config()  # Cargar el volumen guardado
 set_volume(GAMEOVER_MUSIC, config["music_volume"])  # Establecer volumen de música de Game Over
 
-def get_font(size):
-    return pygame.font.Font("assets/fonts/gameovercre1.ttf", size)
+def get_font(size):                                                 # Función para obtener la fuente con un tamaño específico
+    return pygame.font.Font("assets/fonts/font1.otf", size)
 
+def load_languages():
+    with open("languages.json", "r", encoding="utf-8") as f:
+        return json.load(f)
 # Clase para la pantalla de Game Over
 class GameOverScreen:
     def __init__(self, screen, font):
@@ -44,19 +49,19 @@ class GameOverScreen:
         self.font = font  # Guardar la fuente como un objeto ya creado
 
         # Comenzar con un fadeout de la música actual
-        pygame.mixer.music.fadeout(5000)  # Fundido de salida de la música actual en 5 segundos
+        pygame.mixer.music.fadeout(8000)  # Fundido de salida de la música actual en 5 segundos
         pygame.mixer.music.pause()  # Pausar la música
 
         # Crear botones
         self.menu_button = Button(image=pygame.image.load("assets/images/ui/tabla_menu_bt.png"), 
-                                  pos=(1920 // 2, 1080 // 2), 
-                                  text_input="MENU", font=self.font,  # Aquí se usa `self.font`
-                                  base_color="#361612", hovering_color="White")
+                                  pos=(1920 // 2.5, 1080 // 2), 
+                                  text_input=get_text("menu"), font=self.font,  # Aquí se usa `self.font`
+                                  base_color="#361612", hovering_color="#97ff00")
         
         self.quit_button = Button(image=pygame.image.load("assets/images/ui/tabla_exit_bt.png"), 
-                                  pos=(1920 // 2, 1080 // 2 + 150), 
-                                  text_input="EXIT", font=self.font,  # Aquí también se usa `self.font`
-                                  base_color="#361612", hovering_color="Red")
+                                  pos=(1920 // 2.5, 1080 // 2 + 150), 
+                                  text_input=get_text("exit"), font=self.font,  # Aquí también se usa `self.font`
+                                  base_color="#361612", hovering_color="#ff0031")
 
         # Empezar con la música de Game Over
         GAMEOVER_MUSIC.play(-1, fade_ms= 1000)
@@ -70,8 +75,8 @@ class GameOverScreen:
             gameover_font = get_font(120)  # Cambia el tamaño a 120 o al valor que desees
 
         # Crear texto de Game Over con la nueva fuente
-            gameover_text = gameover_font.render("Game Over", True, "White")
-            gameover_rect = gameover_text.get_rect(center=(1920 // 2, 1080 // 4))
+            gameover_text = gameover_font.render(get_text("game_over"), True, "White")
+            gameover_rect = gameover_text.get_rect(center=(1920 // 2.5, 1080 // 4))
             self.screen.blit(gameover_text, gameover_rect)
 
         # Actualizar botones (estos seguirán usando `self.font`)
@@ -88,19 +93,19 @@ class GameOverScreen:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if self.menu_button.checkForInput(mouse_pos):
                         GAMEOVER_MUSIC.stop()
-                        main_menu_status()  
+                        music_playing = False
+                        if not music_playing:
+                            pygame.mixer.music.load("assets/sounds/music/Main Menu.mp3")
+                            pygame.mixer.music.play(-1, fade_ms=3000) 
+                            music_playing = True
+                        from main_menu import main_menu
+                        main_menu()
                     if self.quit_button.checkForInput(mouse_pos):
                         pygame.quit()
                         sys.exit()
 
             pygame.display.update()
 
-
-def main_menu_status():
-    # Para volver al menú principal
-    print("Volviendo al menú principal...")
-    from main import main_menu
-    main_menu()
 
 # Para probar la pantalla de Game Over
 if __name__ == "__main__":

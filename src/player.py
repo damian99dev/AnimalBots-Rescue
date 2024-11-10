@@ -13,8 +13,12 @@ class Player(pygame.sprite.Sprite):
             pygame.image.load(os.path.join(img_folder, 'mona china 1.png')).convert_alpha(),
             pygame.image.load(os.path.join(img_folder, 'mona china 2.png')).convert_alpha()
         ]
+        self.images_jump = [
+            pygame.image.load(os.path.join(img_folder, 'salto.png')).convert_alpha()
+        ]
         # Crear las imágenes invertidas para la dirección izquierda
         self.images_left = [pygame.transform.flip(image, True, False) for image in self.images_right]
+        self.images_jump_left = [pygame.transform.flip(image, True, False) for image in self.images_jump]
 
         # Parámetros de animación
         self.index = 0
@@ -41,11 +45,13 @@ class Player(pygame.sprite.Sprite):
     def animate(self, dt):
         # Si está en el aire, mantener la imagen estática
         if not self.on_surface['Suelo']:  # Verifica si el personaje está en el aire
-            self.index = 0  # Forzar que se mantenga en la primera imagen
+            self.index += self.animation_speed
+            if self.index >= len(self.images_jump):
+                self.index = 0
             if self.flip:
-                self.image = self.images_left[self.index]  # Imagen estática al saltar hacia la izquierda
+                self.image = self.images_jump_left[int(self.index)]
             else:
-                self.image = self.images_right[self.index]  # Imagen estática al saltar hacia la derecha
+                self.image = self.images_jump[int(self.index)]
         else:
             # Si el personaje está en el suelo y se mueve, animar
             if self.direction.x != 0:

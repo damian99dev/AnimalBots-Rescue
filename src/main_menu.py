@@ -1,38 +1,18 @@
-from settings import *                      # Importa todas las configuraciones desde el archivo settings
-from level import Level                     # Importa la clase Level para manejar los niveles del juego
-from pytmx.util_pygame import load_pygame   # Carga los mapas .tmx con soporte para Pygame
-from pathlib import Path                    # Manejo de rutas de archivos de manera flexible
-import pygame, sys                          # Importa Pygame para el motor del juego y sys para la gestión del sistema
-from button import Button                   # Importa la clase Button para todos los botones del menú
-from game_over import GameOverScreen
+import pygame, sys                  # Importa Pygame para el motor del juego y sys para la gestión del sistema
+from button import Button           # Importa la clase Button para todos los botones del menú
 from options_menu import get_text
-import json
-import cv2  # Importar OpenCV
+import json                         # 
+import cv2                          # Importar OpenCV
 
-pygame.init()
+pygame.init() 
 
 video_path = "assets/images/backgrounds/menu.mp4"   # Carga el video con OpenCV
 cap = cv2.VideoCapture(video_path)
 
 music_playing = False                                                   # Variable global para controlar si la música del menú ya está sonando
-PAUSE_SOUND = pygame.mixer.Sound("assets/sounds/fx/pause.mp3")          # Cargar el sonido de pausa
 
 SCREEN = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)       # Cambiado a pantalla completa
 pygame.display.set_caption("AnimalBots Rescue")
-
-BG = pygame.image.load("assets/images/backgrounds/menu.jpg")            # Carga la imagen de fondo del menú
-BG = pygame.transform.scale(BG, (1820, 920))                            # Escala la imagen al tamaño de la pantalla
-
-PAUSE_BUTTON_IMAGE = pygame.image.load("assets/images/ui/pause_bt.png")
-PAUSE_BUTTON_IMAGE = pygame.transform.scale(PAUSE_BUTTON_IMAGE, (int(PAUSE_BUTTON_IMAGE.get_width() * 1.9),  # Ajusta el tamaño del botón de pausa
-                                                                 int(PAUSE_BUTTON_IMAGE.get_height() * 1.9)))
-PAUSE_BUTTON_RECT = PAUSE_BUTTON_IMAGE.get_rect(topleft=(1440, 10))       # Coloca en la esquina superior izquierda
-
-HEALTH_BAR_IMAGE = pygame.image.load("graphics/ui/game_elements/corazones daño3.png")
-HEALTH_BAR_IMAGE = pygame.transform.scale(HEALTH_BAR_IMAGE, (int(HEALTH_BAR_IMAGE.get_width() * 0.3),  # Ajusta el tamaño de la barra de salud
-                                                               int(HEALTH_BAR_IMAGE.get_height() * 0.3)))
-HEALTH_BAR_POS = HEALTH_BAR_IMAGE.get_rect(topleft=(-50, -50))      # Coloca en la esquina superior izquierda
-
 
 def get_font(size):                                                 # Función para obtener la fuente con un tamaño específico
     return pygame.font.Font("assets/fonts/font1.otf", size)
@@ -40,6 +20,27 @@ def get_font(size):                                                 # Función p
 def load_languages():
     with open("languages.json", "r", encoding="utf-8") as f:
         return json.load(f)
+    
+
+def load_config():
+    try:
+        with open('config.json', 'r') as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {"music_volume": 0.5}  # Valores predeterminados
+
+def save_config(music_volume):
+    with open('config.json', 'w') as f:
+        json.dump({"music_volume": music_volume}, f)
+
+MAIN_MUSIC = pygame.mixer.Sound("assets/sounds/music/Main Menu.mp3")
+def set_volume(sound, volume):
+    sound.set_volume(volume)
+
+# Cargar volumen desde la configuración
+config = load_config()  # Cargar el volumen guardado
+set_volume(MAIN_MUSIC, config["music_volume"])  # Establecer volumen de música de Game Over
+
     
 def main_menu():
     global music_playing

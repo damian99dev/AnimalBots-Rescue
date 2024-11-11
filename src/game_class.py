@@ -16,8 +16,6 @@ PAUSE_SOUND = pygame.mixer.Sound("assets/sounds/fx/pause.mp3")          # Cargar
 SCREEN = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)       # Cambiado a pantalla completa
 pygame.display.set_caption("AnimalBots Rescue")
 
-BG = pygame.image.load("assets/images/backgrounds/menu.jpg")            # Carga la imagen de fondo del menú
-BG = pygame.transform.scale(BG, (1820, 920))                            # Escala la imagen al tamaño de la pantalla
 
 PAUSE_BUTTON_IMAGE = pygame.image.load("assets/images/ui/pause_bt.png")
 PAUSE_BUTTON_IMAGE = pygame.transform.scale(PAUSE_BUTTON_IMAGE, (int(PAUSE_BUTTON_IMAGE.get_width() * 1.9),  # Ajusta el tamaño del botón de pausa
@@ -54,6 +52,10 @@ class Game:
     
         # Temporizador de 600 segundos
         self.timer = 300
+        self.start_time = pygame.time.get_ticks()
+        self.paused = False
+        self.pause_start_time = None
+        self.total_pause_time = 0
         self.font = get_font(50)  # Usa la misma fuente con un tamaño de 50
         self.start_time = pygame.time.get_ticks()  # Tiempo al que se inicia el juego
 
@@ -61,61 +63,62 @@ class Game:
         pygame.mixer.music.load("assets\sounds\music\Hypertext.mp3")
         pygame.mixer.music.play(-1)
 
+
     def run(self):
         while True:
-            dt = self.clock.tick(60) / 1000  # Limita el framerate a 60 FPS
+            dt = self.clock.tick(60) / 1000
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
 
                 if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE or event.key == pygame.K_p:  # Presiona 'P' o 'ESCAPE' para pausar
-                        self.paused = not self.paused  # Alterna el estado de pausa
+                    if event.key == pygame.K_ESCAPE or event.key == pygame.K_p:
+                        self.paused = not self.paused
                         if self.paused:
-                            pygame.mixer.music.pause()  # Pausar la música
-                            PAUSE_SOUND.play()  # Reproducir sonido de pausa
+                            pygame.mixer.music.pause()
+                            PAUSE_SOUND.play()
+                            self.pause_start_time = pygame.time.get_ticks()
                         else:
-                            pygame.mixer.music.unpause()  # Reanudar la música
-
+                            pygame.mixer.music.unpause()
+                            if self.pause_start_time:
+                                self.total_pause_time += pygame.time.get_ticks() - self.pause_start_time
+                                self.pause_start_time = None
+                
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if PAUSE_BUTTON_RECT.collidepoint(event.pos):
                         self.paused = not self.paused
                         if self.paused:
                             pygame.mixer.music.pause()  # Pausar la música
                             PAUSE_SOUND.play()  # Reproducir sonido de pausa
+                            self.pause_start_time = pygame.time.get_ticks()
                         else:
-                            pygame.mixer.music.unpause()  # Reanudar la música
+                            pygame.mixer.music.unpause()
+                            if self.pause_start_time:
+                                self.total_pause_time += pygame.time.get_ticks() - self.pause_start_time
+                                self.pause_start_time = None
 
             if self.paused:
-                self.show_pause_menu()  # Muestra el menú de pausa
+                self.show_pause_menu()
             else:
-                # Actualiza el nivel actual y temporizador
                 self.current_stage.run(dt)
-
-                # Calcula el tiempo restante
                 self.update_timer()
 
-            # Mostrar la barra de salud y el botón de pausa en pantalla
             SCREEN.blit(HEALTH_BAR_IMAGE, HEALTH_BAR_POS)
             SCREEN.blit(PAUSE_BUTTON_IMAGE, PAUSE_BUTTON_RECT)
-
             pygame.display.update()
 
+
     def update_timer(self):
-        # Calcula el tiempo transcurrido
-        elapsed_time = (pygame.time.get_ticks() - self.start_time) / 1000  # Convertir a segundos
-        remaining_time = max(0, self.timer - elapsed_time)  # Asegurarse que no sea negativo
-
-        # Muestra el temporizador en pantalla solo con los números
+        elapsed_time = (pygame.time.get_ticks() - self.start_time - self.total_pause_time) / 1000
+        remaining_time = max(0, self.timer - elapsed_time)
         timer_text = self.font.render(f'{int(remaining_time)}', True, "White")
-        timer_rect = timer_text.get_rect(center=(SCREEN.get_width() // 2, 50))  # Centrado horizontalmente
-
+        timer_rect = timer_text.get_rect(center=(SCREEN.get_width() // 2, 50))
         SCREEN.blit(timer_text, timer_rect)
 
-        # Si el tiempo llega a 0, activa la pantalla de Game Over
         if remaining_time <= 0:
             self.game_over()
+
 
     def game_over(self):
         # Crear instancia de la pantalla de Game Over
@@ -156,13 +159,24 @@ class Game:
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if resume_button.checkForInput(mouse_pos):
-                    self.paused = False  # Reanuda el juego
-                    pygame.mixer.music.unpause()  # Reanudar la música
+                    self.paused = not self.paused
+                    if self.paused:
+                        pygame.mixer.music.pause()
+                        PAUSE_SOUND.play()
+                        self.pause_start_time = pygame.time.get_ticks()
+                    else:
+                        pygame.mixer.music.unpause()
+                        if self.pause_start_time:
+                            self.total_pause_time += pygame.time.get_ticks() - self.pause_start_time
+                            self.pause_start_time = None
+
+
                 elif main_menu_button.checkForInput(mouse_pos):
                     pygame.mixer.music.load("assets/sounds/music/Main Menu.mp3")
                     pygame.mixer.music.play(-1, fade_ms=3000)
                     from main_menu import main_menu
                     main_menu()  # Vuelve al menú principal
+
                 elif quit_button.checkForInput(mouse_pos):
                     pygame.quit()  # Cierra Pygame
                     sys.exit()  # Cierra el sistema

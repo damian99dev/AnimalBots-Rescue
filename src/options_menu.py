@@ -11,10 +11,6 @@ cap = cv2.VideoCapture(video_path)
 
 SCREEN = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)       # Cambiado a pantalla completa
 pygame.display.set_caption("AnimalBots Rescue")
-
-BG = pygame.image.load("assets/images/backgrounds/menu.jpg")            # Carga la imagen de fondo del menú
-BG = pygame.transform.scale(BG, (1820, 920))                            # Escala la imagen al tamaño de la pantalla
-
 def get_font(size):                                                     # Función para obtener la fuente con un tamaño específico
     return pygame.font.Font("assets/fonts/font1.otf", size)
 
@@ -93,12 +89,12 @@ def options():
     OPTIONS_TITLE = get_font(145).render(get_text("options_title"), True, "Yellow")
     MUSIC_VOLUME_LABEL = get_font(60).render(get_text("music_volume"), True, "White")
     OPTIONS_BACK = Button(image=None, pos=(screen_width // 7, screen_height // 7 + 650), 
-                          text_input=get_text("back"), font=get_font(55), base_color="White", hovering_color="#ffef00")
+                        text_input=get_text("back"), font=get_font(55), base_color="White", hovering_color="#ffef00")
     
     # Establecer el texto completo de idioma inicial
     language_text = "Español" if current_language == "es" else "English"
     LANGUAGE_BUTTON = Button(image=None, pos=(screen_width // 2, screen_height // 2 + 200),
-                             text_input=language_text, font=get_font(55), base_color="White", hovering_color="#b00035")
+                            text_input=language_text, font=get_font(55), base_color="White", hovering_color="#b00035")
 
     while True:
         ret, frame = cap.read()
@@ -145,14 +141,14 @@ def options():
                     current_language = "en" if current_language == "es" else "es"
                     language_text = "Español" if current_language == "es" else "English"
                     LANGUAGE_BUTTON = Button(image=None, pos=(screen_width // 2, screen_height // 2 + 200),
-                                             text_input=language_text, font=get_font(55), 
-                                             base_color="White", hovering_color="#b00035")
+                                            text_input=language_text, font=get_font(55), 
+                                            base_color="White", hovering_color="#b00035")
                     
                     # Actualizar textos en el nuevo idioma seleccionado
                     OPTIONS_TITLE = get_font(145).render(get_text("options_title"), True, "Yellow")
                     MUSIC_VOLUME_LABEL = get_font(60).render(get_text("music_volume"), True, "White")
                     OPTIONS_BACK = Button(image=None, pos=(screen_width // 7, screen_height // 7 + 650), 
-                                          text_input=get_text("back"), font=get_font(55), base_color="White", hovering_color="#ffef00")
+                                        text_input=get_text("back"), font=get_font(55), base_color="White", hovering_color="#ffef00")
             
             # Manejar eventos del slider
             slider.handle_event(event)

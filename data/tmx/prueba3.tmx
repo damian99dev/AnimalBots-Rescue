@@ -333,7 +333,7 @@
 </data>
  </layer>
  <objectgroup id="2" name="Objetos">
-  <object id="2" name="player" gid="1" x="672" y="672" width="32" height="32"/>
+  <object id="2" name="player" gid="1" x="2685.33" y="278.667" width="32" height="32"/>
   <object id="229" name="meta" gid="4899" x="2912" y="3712" width="32" height="32"/>
   <object id="230" name="fin" gid="8561" x="2150" y="352.667" width="52.3333" height="6"/>
   <object id="265" name="fin" gid="8561" x="1663.5" y="378.667" width="415.833" height="6"/>
@@ -375,7 +375,6 @@
   <object id="268" name="pinchos" gid="8565" x="2144" y="352" width="32" height="32"/>
   <object id="269" name="pinchos" gid="8565" x="2176" y="352" width="32" height="32"/>
   <object id="270" name="pinchos" gid="8565" x="2560" y="352" width="32" height="32"/>
-  <object id="283" name="pinchos" gid="8565" x="2448" y="153" width="32" height="32"/>
   <object id="284" name="pinchos" gid="8565" x="2592" y="352" width="32" height="32"/>
  </objectgroup>
 </map>

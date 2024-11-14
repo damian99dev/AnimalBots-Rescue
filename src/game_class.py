@@ -140,7 +140,7 @@ class Game:
         paused_button = Button(image=pygame.image.load("assets/images/ui/paused_bt.png"), pos=(SCREEN.get_width() // 2.01, SCREEN.get_height() // 2 - 200),
                             text_input="", font=get_font(50), base_color="Green", hovering_color="Green")
         resume_button = Button(image=pygame.image.load("assets/images/ui/tabla_resume_bt.png"), pos=(SCREEN.get_width() // 2, SCREEN.get_height() // 2),
-                            text_input=get_text("resume"), font=get_font(50), base_color="#361612", hovering_color="#97ff00")
+                            text_input=get_text("resume"), font=get_font(50), base_color="#361612", hovering_color="#38bc0f")
         main_menu_button = Button(image=pygame.image.load("assets/images/ui/tabla_menu_bt.png"), pos=(SCREEN.get_width() // 2, SCREEN.get_height() // 2 + 100),
                                 text_input=get_text("menu"), font=get_font(50), base_color="#361612", hovering_color="#ffef00")
         quit_button = Button(image=pygame.image.load("assets/images/ui/tabla_exit_bt.png") , pos=(SCREEN.get_width() // 2, SCREEN.get_height() // 2 + 200),

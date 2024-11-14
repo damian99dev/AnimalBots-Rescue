@@ -68,7 +68,7 @@ class GameOverScreen:
             RETRY_BT = Button(image=pygame.image.load("assets/images/ui/GO_retry_bt.PNG"),
                                     pos=(1920 // 2.5, 1080 // 2), 
                                     text_input=get_text("retry"), font=get_font(60), 
-                                    base_color="#231f1f", hovering_color="#97ff00")
+                                    base_color="#231f1f", hovering_color="#38bc0f")
             MENU_BT = Button(image=pygame.image.load("assets/images/ui/GO_tabla_menu_bt_.PNG"), 
                                     pos=(1920 // 2.5, 1080 // 2 + 140), 
                                     text_input=get_text("menu"), font=get_font(50), 

@@ -91,7 +91,7 @@ def main_menu():
 
         # Crear botones del menú principal
         PLAY_BUTTON = Button(image=pygame.image.load("assets/images/ui/play_bt.png"), pos=(screen_width // 2 + 25, screen_height // 1.7), 
-                         text_input=get_text("play"), font=get_font(80), base_color="#361612", hovering_color="#97ff00")
+                         text_input=get_text("play"), font=get_font(80), base_color="#361612", hovering_color="#38bc0f")
         OPTIONS_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla_options_bt.png"), pos=(screen_width // 2 + 22, screen_height // 2 + 230), 
                             text_input=get_text("options"), font=get_font(57), base_color="#361612", hovering_color="white")
         QUIT_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla_exit_bt.png"), pos=(screen_width // 2 + 20, screen_height // 2 + 350), 

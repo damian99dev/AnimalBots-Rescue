@@ -83,11 +83,11 @@ class VictoryScreen:
             NEXT_BT = Button(image=pygame.image.load("assets/images/ui/next_bt.png"),
                                     pos=(1920 // 2.5, 1080 // 2), 
                                     text_input=get_text("next"), font=get_font(60), 
-                                    base_color="#361612", hovering_color="#97ff00")
+                                    base_color="#361612", hovering_color="#38bc0f")
             MENU_BT = Button(image=pygame.image.load("assets/images/ui/tabla_menu_bt.png"), 
                                     pos=(1920 // 2.5, 1080 // 2 + 140), 
                                     text_input=get_text("menu"), font=get_font(50), 
-                                    base_color="#361612", hovering_color="#97ff00")
+                                    base_color="#361612", hovering_color="#ffef00")
             EXIT_BT = Button(image=pygame.image.load("assets/images/ui/tabla_exit_bt.png"), 
                                     pos=(1920 // 2.5, 1080 // 2 + 250), 
                                     text_input=get_text("exit"), font=get_font(50), 

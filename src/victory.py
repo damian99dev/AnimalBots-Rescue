@@ -28,8 +28,8 @@ VICTORY_MUSIC = pygame.mixer.Sound("assets/sounds/music/End and Thanks!.flac")
 WINBANJO = pygame.mixer.Sound("assets/sounds/fx/winbanjo.mp3")
 
 # Cargar imágenes y fuentes
-BG_IMAGE = pygame.image.load("graphics/Background/backgg.png")
-BG_IMAGE = pygame.transform.scale(BG_IMAGE, (1920, 1080))
+BG_IMAGE = pygame.image.load("assets/images/backgrounds/win_bgg.jpg")
+BG_IMAGE = pygame.transform.scale(BG_IMAGE, (1550, 870))
 
 def set_volume(sound, volume):                            # Establece el volumen para un sonido
     sound.set_volume(volume)
@@ -72,7 +72,7 @@ class VictoryScreen:
 
         # Empezar con el sonido WINBANJO
         pygame.mixer.music.load("assets/sounds/fx/winbanjo.mp3")
-        pygame.mixer.music.play(-1)
+        pygame.mixer.music.play()
         
 
     def run(self):

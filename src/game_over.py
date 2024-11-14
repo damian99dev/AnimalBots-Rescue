@@ -18,9 +18,8 @@ pygame.display.set_caption("Game Over!")
 GAMEOVER_MUSIC = pygame.mixer.Sound("assets/sounds/music/Death is only the beginning.mp3")
 
 # Cargar imágenes y fuentes
-BG_IMAGE = pygame.image.load("graphics/Background/backgg.png")
-BG_IMAGE = pygame.transform.scale(BG_IMAGE, (1920, 1080))
-
+BG_IMAGE = pygame.image.load("assets/images/backgrounds/gameover_bgg.jpg")
+BG_IMAGE = pygame.transform.scale(BG_IMAGE, (1550, 870))
 
 # Cargar volumen desde la configuración
 
@@ -56,40 +55,28 @@ class GameOverScreen:
         # Comenzar con un fadeout de la música actual
         pygame.mixer.music.fadeout(5000)  # Fundido de salida de la música actual en 5 segundos
         pygame.mixer.music.pause()  # Pausar la música
-
-        # Crear botones
-        self.menu_button = Button(image=pygame.image.load("assets/images/ui/tabla_menu_bt.png"), 
-                                pos=(1920 // 2.5, 1080 // 2), 
-                                text_input=get_text("menu"), font=self.font,  # Aquí se usa self.font
-                                base_color="#361612", hovering_color="#97ff00")
-        
-        self.quit_button = Button(image=pygame.image.load("assets/images/ui/tabla_exit_bt.png"), 
-                                pos=(1920 // 2.5, 1080 // 2 + 150), 
-                                text_input=get_text("exit"), font=self.font,  # Aquí también se usa self.font
-                                base_color="#361612", hovering_color="#ff0031")
-
-        
+    
         pygame.mixer.music.load("assets/sounds/music/Death is only the beginning.mp3")
         pygame.mixer.music.play(-1)
 
 
     def run(self):  
-        while True:
+        while True: 
             
             LEVEL_MOUSE_POS = pygame.mouse.get_pos()  
 
-            RETRY_BT = Button(image=pygame.image.load("assets/images/ui/retry_bt.png"),
+            RETRY_BT = Button(image=pygame.image.load("assets/images/ui/GO_retry_bt.PNG"),
                                     pos=(1920 // 2.5, 1080 // 2), 
                                     text_input=get_text("retry"), font=get_font(60), 
-                                    base_color="#361612", hovering_color="#97ff00")
-            MENU_BT = Button(image=pygame.image.load("assets/images/ui/tabla_menu_bt.png"), 
+                                    base_color="#231f1f", hovering_color="#97ff00")
+            MENU_BT = Button(image=pygame.image.load("assets/images/ui/GO_tabla_menu_bt_.PNG"), 
                                     pos=(1920 // 2.5, 1080 // 2 + 140), 
                                     text_input=get_text("menu"), font=get_font(50), 
-                                    base_color="#361612", hovering_color="#97ff00")
-            EXIT_BT = Button(image=pygame.image.load("assets/images/ui/tabla_exit_bt.png"), 
+                                    base_color="#231f1f", hovering_color="#ffef00")
+            EXIT_BT = Button(image=pygame.image.load("assets/images/ui/GO_tabla_exit_bt.PNG"), 
                                     pos=(1920 // 2.5, 1080 // 2 + 250), 
                                     text_input=get_text("exit"), font=get_font(50), 
-                                    base_color="#361612", hovering_color="#ff0031")
+                                    base_color="#231f1f", hovering_color="#ff0031")
 
 
             self.screen.blit(BG_IMAGE, (0, 0))
@@ -99,7 +86,7 @@ class GameOverScreen:
             gameover_font = get_font(120)  # Cambia el tamaño a 120 o al valor que desees
 
         # Crear texto de Game Over con la nueva fuente
-            gameover_text = gameover_font.render(get_text("game_over"), True, "White")
+            gameover_text = gameover_font.render(get_text("game_over"), True, "#231f1f")
             gameover_rect = gameover_text.get_rect(center=(1920 // 2.5, 1080 // 4))
             self.screen.blit(gameover_text, gameover_rect)
 

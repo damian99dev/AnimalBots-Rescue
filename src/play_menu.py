@@ -52,11 +52,11 @@ def play():
         
         # Crea botones para los niveles y el botón de retroceso
         LEVEL_1_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(screen_width // 2, screen_height // 2), 
-                                text_input=get_text("beginner"), font=get_font(65), base_color="#361612", hovering_color="#97ff00")
+                                text_input=get_text("beginner"), font=get_font(65), base_color="#361612", hovering_color="#38bc0f")
         LEVEL_2_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(screen_width // 2, screen_height // 2 + 150), 
-                        text_input=get_text("medium"), font=get_font(65), base_color="#361612", hovering_color="#ffef00")
+                        text_input=get_text("medium"), font=get_font(65), base_color="#361612", hovering_color="#38bc0f")
         LEVEL_3_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(screen_width // 2, screen_height // 2 + 300), 
-                        text_input=get_text("advanced"), font=get_font(65), base_color="#361612", hovering_color="#ff0031")
+                        text_input=get_text("advanced"), font=get_font(65), base_color="#361612", hovering_color="#38bc0f")
         
         BACK_BUTTON = Button(image=None, pos=(screen_width // 7, screen_height // 7 + 650), 
                     text_input=get_text("back2"), font=get_font(55), base_color="White", hovering_color="#ffef00")

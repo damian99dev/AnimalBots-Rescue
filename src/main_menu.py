@@ -60,7 +60,7 @@ def main_menu():
 
     # Crea una fuente
     beta_font = get_font(30) 
-    beta_text = beta_font.render("VERSION 2.1.0", True, (255, 255, 255)) 
+    beta_text = beta_font.render("VERSION 3.1.0", True, (255, 255, 255)) 
     beta_text_rect = beta_text.get_rect(topleft=(10, screen_height - 40))
 
     # Menú principal

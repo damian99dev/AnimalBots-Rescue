@@ -14,7 +14,9 @@
         "back2": "Back",
         "game_over": "GAME OVER",
         "level_text": "SELELCT LEVEL",
-        "victory": "YOU WON! :D"
+        "victory": "YOU WON! :D",
+        "next": "Next"
+
     },
     "es": {
         "play": "JUGAR",
@@ -31,6 +33,9 @@
         "back2": "Volver",
         "game_over": "JUEGO TERMINADO",
         "level_text": "SELECCIONA NIVEL",
-        "victory": "¡GANASTE! :D"
+        "victory": "¡GANASTE! :D",
+        "next": "Siguiente",
+        "retry": "Reintentar"
+
     }
 }

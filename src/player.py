@@ -28,7 +28,7 @@ class Player(pygame.sprite.Sprite):
         
         # Rectángulos
         self.rect = self.image.get_rect(topleft=pos)
-        self.hitbox_rect = self.rect.inflate(-3, -3)
+        self.hitbox_rect = self.rect.inflate(-10, -3)
         self.old_rect = self.hitbox_rect.copy()
 
         # Movimiento del personaje

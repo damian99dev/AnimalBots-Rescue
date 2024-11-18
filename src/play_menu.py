@@ -62,7 +62,7 @@ def play():
         LEVEL_5_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(3 * screen_width // 4, screen_height // 2 - 100), 
                                 text_input=get_text("3-1"), font=get_font(40), base_color="#361612", hovering_color="#ffef00")
         LEVEL_6_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(3 * screen_width // 4, screen_height // 2 + 100), 
-                                text_input=get_text("3-3"), font=get_font(40), base_color="#361612", hovering_color="#ff0031")
+                                text_input=get_text("3-2"), font=get_font(40), base_color="#361612", hovering_color="#ff0031")
 
         BACK_BUTTON = Button(image=None, pos=(screen_width // 7, screen_height // 7 + 650), 
                              text_input=get_text("back2"), font=get_font(55), base_color="White", hovering_color="#ffef00")
@@ -104,7 +104,7 @@ def play():
                     game = Game(current_level_config.current_level)  # Cargar el nivel 5
                     game.run()
                 elif LEVEL_6_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    current_level_config.current_level = 'prueba3-3.tmx'
+                    current_level_config.current_level = 'prueba3-2.tmx'
                     current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
                     game = Game(current_level_config.current_level)  # Cargar el nivel 6
                     game.run()

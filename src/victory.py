@@ -47,7 +47,7 @@ def load_languages():
         return json.load(f)
     
 class NivelManager:
-    niveles = ['prueba.tmx', 'prueba2.tmx', 'prueba3.tmx']
+    niveles = ['prueba.tmx', 'prueba1-2.tmx', 'prueba2.tmx', 'prueba2-2.tmx', 'prueba3.tmx', 'prueba3-2.tmx' ]
     nivel_actual = current_level_config.load_current_level()  # Nivel inicial
 
     @classmethod

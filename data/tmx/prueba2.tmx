@@ -231,7 +231,7 @@
  </layer>
  <objectgroup id="2" name="Objetos">
   <object id="2" name="player" gid="1" x="320" y="1696" width="32" height="32"/>
-  <object id="146" name="meta" gid="4898" x="1086" y="1106" width="32" height="32"/>
+  <object id="146" name="meta" gid="4898" x="800" y="1920" width="32" height="32"/>
   <object id="245" name="fin" gid="4917" x="2176" y="1856" width="5" height="6"/>
   <object id="246" name="fin" gid="4917" x="2080" y="1696" width="5" height="253.333"/>
   <object id="247" name="fin" gid="4917" x="2227" y="1919" width="10.6667" height="158"/>

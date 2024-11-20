@@ -341,7 +341,7 @@
   <object id="232" name="fin" gid="8561" x="2379.33" y="353.333" width="41" height="6"/>
  </objectgroup>
  <objectgroup id="7" name="fondotras"/>
- <objectgroup id="4" name="Enemies"/>
+ <objectgroup id="4" name="enemies"/>
  <objectgroup id="5" name="Backgtras">
   <properties>
    <property name="platfrom" type="object" value="0"/>

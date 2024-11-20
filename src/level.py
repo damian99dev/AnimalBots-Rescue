@@ -3,6 +3,7 @@ from settings import *
 from sprites import Sprite
 from player import Player
 from groups import AllSprites  # Importamos AllSprites para su uso en el nivel
+from enemy import Enemy  # Importar la clase Enemy
 from game_over import GameOverScreen, get_font  # Importar GameOverScreen y get_font
 
 class Level:
@@ -10,6 +11,7 @@ class Level:
         self.display_surface = pygame.display.get_surface()
         self.all_sprites = AllSprites()  # Grupo general para todos los sprites con manejo de zoom
         self.collision_sprites = pygame.sprite.Group()  # Grupo de sprites con colisiones
+        self.enemy_sprites = pygame.sprite.Group()  # Grupo para los enemigos
         self.background_objects = pygame.sprite.Group()  # Grupo para objetos de fondo (sin colisiones)
         self.background = None
         self.fin_objects = []
@@ -18,7 +20,7 @@ class Level:
     def setup(self, tmx_map):
         # Cargamos la capa de fondo 'backg'
         backg_layer = tmx_map.get_layer_by_name('backg')
-        if backg_layer:
+        if (backg_layer):
             self.background = pygame.Surface((tmx_map.width * tile_size, tmx_map.height * tile_size))
             for x, y, surf in backg_layer.tiles():
                 self.background.blit(surf, (x * tile_size, y * tile_size))
@@ -41,17 +43,31 @@ class Level:
                 self.fin_objects.append((fin_rect, fin_image, (obj.x, obj.y)))
         # Cargar los objetos de la capa 'Backgtras' (por ejemplo, árboles)
         self.load_background_objects(tmx_map)
+        # Cargar los enemigos
+        self.load_enemies(tmx_map)
 
     def load_background_objects(self, tmx_map):
         # Cargamos la capa de objetos traspasables 
         backgtras_layer = tmx_map.get_layer_by_name('Backgtras')
         if backgtras_layer:
             for obj in backgtras_layer:
-                if obj.name in ['arbol', 'mig', 'jos', 'dam', 'gre', 'rox', 'nao', 'flechaa', 'flechab','pinchos', 'negro',  'derecha', 'arbu', 'arbust', 'rocab', 'rocag', 'pa', 'st', 'laser', 'laser2', 'laser3', 'fondo', 'picos1', 'picos2', 'picos3']:
+                if obj.name in ['fence', 'barril', 'arbol', 'mig', 'jos', 'dam', 'gre', 'rox', 'nao', 'flechaa', 'flechab','pinchos', 'negro',  'derecha', 'arbu', 'arbust', 'rocab', 'rocag', 'pa', 'st', 'laser', 'laser2', 'laser3', 'fondo', 'picos1', 'picos2', 'picos3']:
                     image_path = f'graphics/Background/{obj.name}.png'  # Asegúrate de tener las imágenes en la carpeta 'graphics/Background'
                     object_image = pygame.image.load(image_path).convert_alpha()
                     object_image = pygame.transform.scale(object_image, (obj.width, obj.height))
                     Sprite((obj.x, obj.y), object_image, self.all_sprites)  # Agregar al grupo all_sprites (sin colisiones)
+
+    def load_enemies(self, tmx_map):
+        enemies_layer = tmx_map.get_layer_by_name('enemies')
+        if enemies_layer:
+            for obj in enemies_layer:
+                if obj.name == 'enemy1':
+                    image_path = 'graphics/enemies/enemy1.png'
+                    enemy_image = pygame.image.load(image_path).convert_alpha()
+                    enemy_image = pygame.transform.scale(enemy_image, (obj.width, obj.height))
+                    enemy = Enemy((obj.x, obj.y), enemy_image, self.collision_sprites)
+                    self.all_sprites.add(enemy)
+                    self.enemy_sprites.add(enemy)
 
     def run(self, dt):
         # Dibujamos el fondo si está cargado

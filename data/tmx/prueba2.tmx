@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="150" height="65" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="250">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="150" height="65" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="252">
  <tileset firstgid="1" name="mona china 1" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../../graphics/Protagonist/mona china 1.png" trans="ff00ff" width="32" height="32"/>
  </tileset>
@@ -77,6 +77,9 @@
  </tileset>
  <tileset firstgid="4920" name="picos3" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../../graphics/Background/picos3.png" trans="ff00ff" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="4921" name="enemy1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
+  <image source="../../graphics/enemies/enemy1.png" trans="ff00ff" width="64" height="64"/>
  </tileset>
  <layer id="3" name="backg" width="150" height="65" visible="0">
   <data encoding="csv">
@@ -159,6 +162,7 @@
   <object id="242" name="picos2" gid="4919" x="2208" y="1792" width="32" height="32"/>
   <object id="243" name="picos2" gid="4919" x="2208" y="1824" width="32" height="32"/>
   <object id="244" name="picos2" gid="4919" x="2208" y="1856" width="32" height="32"/>
+  <object id="250" name="fondo" gid="4915" x="933" y="1953" width="188" height="104"/>
  </objectgroup>
  <layer id="1" name="Suelo" width="150" height="65">
   <data encoding="csv">
@@ -231,10 +235,12 @@
  </layer>
  <objectgroup id="2" name="Objetos">
   <object id="2" name="player" gid="1" x="320" y="1696" width="32" height="32"/>
-  <object id="146" name="meta" gid="4898" x="800" y="1920" width="32" height="32"/>
+  <object id="146" name="meta" gid="4898" x="1152" y="1824" width="32" height="32"/>
   <object id="245" name="fin" gid="4917" x="2176" y="1856" width="5" height="6"/>
   <object id="246" name="fin" gid="4917" x="2080" y="1696" width="5" height="253.333"/>
   <object id="247" name="fin" gid="4917" x="2227" y="1919" width="10.6667" height="158"/>
  </objectgroup>
- <objectgroup id="4" name="Enemies"/>
+ <objectgroup id="4" name="enemies">
+  <object id="251" name="enemy1" gid="4921" x="640" y="1920" width="64" height="64"/>
+ </objectgroup>
 </map>

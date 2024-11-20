@@ -236,5 +236,5 @@
   <object id="246" name="fin" gid="4917" x="2080" y="1696" width="5" height="253.333"/>
   <object id="247" name="fin" gid="4917" x="2227" y="1919" width="10.6667" height="158"/>
  </objectgroup>
- <objectgroup id="4" name="Enemies"/>
+ <objectgroup id="4" name="enemies"/>
 </map>

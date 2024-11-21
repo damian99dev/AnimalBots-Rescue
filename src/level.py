@@ -62,10 +62,14 @@ class Level:
         if enemies_layer:
             for obj in enemies_layer:
                 if obj.name == 'enemy1':
-                    image_path = 'graphics/enemies/enemy1.png'
-                    enemy_image = pygame.image.load(image_path).convert_alpha()
-                    enemy_image = pygame.transform.scale(enemy_image, (obj.width, obj.height))
-                    enemy = Enemy((obj.x, obj.y), enemy_image, self.collision_sprites)
+                    image_path1 = 'graphics/enemies/enemy1.png'
+                    image_path2 = 'graphics/enemies/enemy2.png'
+                    enemy_image1 = pygame.image.load(image_path1).convert_alpha()
+                    enemy_image2 = pygame.image.load(image_path2).convert_alpha()
+                    enemy_image1 = pygame.transform.scale(enemy_image1, (obj.width, obj.height))
+                    enemy_image2 = pygame.transform.scale(enemy_image2, (obj.width, obj.height))
+                    enemy_images = [enemy_image1, enemy_image2]
+                    enemy = Enemy((obj.x, obj.y), enemy_images, self.collision_sprites)
                     self.all_sprites.add(enemy)
                     self.enemy_sprites.add(enemy)
 

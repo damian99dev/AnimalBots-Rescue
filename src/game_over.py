@@ -23,13 +23,13 @@ BG_IMAGE = pygame.transform.scale(BG_IMAGE, (1550, 870))
 
 # Cargar volumen desde la configuración
 
-def get_font(size):                                                 # Función para obtener la fuente con un tamaño específico
+def get_font(size):
     return pygame.font.Font("assets/fonts/font1.otf", size)
 
 def load_languages():
     with open("languages.json", "r", encoding="utf-8") as f:
         return json.load(f)
-    
+
 # Clase para la pantalla de Game Over
 music_playing = False
 
@@ -46,7 +46,6 @@ class NivelManager:
         else:
             cls.nivel_actual = None  # No hay más niveles
 
-
 class GameOverScreen:
     def __init__(self, screen, font):
         self.screen = screen  # Guardar la pantalla
@@ -59,10 +58,8 @@ class GameOverScreen:
         pygame.mixer.music.load("assets/sounds/music/Death is only the beginning.mp3")
         pygame.mixer.music.play(-1)
 
-
     def run(self):  
         while True: 
-            
             LEVEL_MOUSE_POS = pygame.mouse.get_pos()  
 
             RETRY_BT = Button(image=pygame.image.load("assets/images/ui/GO_retry_bt.PNG"),
@@ -78,14 +75,13 @@ class GameOverScreen:
                                     text_input=get_text("exit"), font=get_font(50), 
                                     base_color="#231f1f", hovering_color="#ff0031")
 
-
             self.screen.blit(BG_IMAGE, (0, 0))
             mouse_pos = pygame.mouse.get_pos()
 
-        # Crear una nueva fuente solo para el texto "Game Over" con un tamaño más grande
+            # Crear una nueva fuente solo para el texto "Game Over" con un tamaño más grande
             gameover_font = get_font(120)  # Cambia el tamaño a 120 o al valor que desees
 
-        # Crear texto de Game Over con la nueva fuente
+            # Crear texto de Game Over con la nueva fuente
             gameover_text = gameover_font.render(get_text("game_over"), True, "#231f1f")
             gameover_rect = gameover_text.get_rect(center=(1920 // 2.5, 1080 // 4))
             self.screen.blit(gameover_text, gameover_rect)
@@ -95,9 +91,7 @@ class GameOverScreen:
                 button.changeColor(LEVEL_MOUSE_POS)
                 button.update(SCREEN)
 
-
             music_playing = False
-
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -122,7 +116,5 @@ class GameOverScreen:
                             music_playing = True
                         from main_menu import main_menu
                         main_menu()
-
-
 
             pygame.display.update()

@@ -205,7 +205,6 @@
   <object id="146" name="meta" gid="4899" x="3392" y="864" width="32" height="32"/>
   <object id="231" name="fin" gid="4917" x="1769.33" y="1696" width="40.3333" height="6"/>
  </objectgroup>
- <objectgroup id="7" name="fondotras"/>
  <objectgroup id="4" name="enemies">
   <object id="229" name="enemy" gid="4916" x="768" y="1120" width="64" height="64"/>
  </objectgroup>

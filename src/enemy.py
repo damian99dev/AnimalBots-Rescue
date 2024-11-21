@@ -7,7 +7,8 @@ class Enemy(pygame.sprite.Sprite):
         self.images = images
         self.image = self.images[0]
         self.rect = self.image.get_rect(topleft=pos)
-        self.hitbox_rect = self.rect.inflate(-10, -3)
+        self.hitbox_rect = self.rect.inflate(-10, -3)  # Rectángulo de colisión con las paredes
+        self.player_hitbox_rect = self.rect.inflate(-20, -80)  # Rectángulo de colisión con el jugador
         self.direction = pygame.Vector2(1, 0)  # Movimiento hacia la derecha
         self.speed = 150
         self.collision_sprites = collision_sprites
@@ -61,6 +62,9 @@ class Enemy(pygame.sprite.Sprite):
 
         # Actualizar la posición del rectángulo principal
         self.rect.topleft = self.hitbox_rect.topleft
+
+        # Actualizar la posición del rectángulo de colisión con el jugador
+        self.player_hitbox_rect.center = self.hitbox_rect.center
 
         # Animar el enemigo
         self.animate(dt)

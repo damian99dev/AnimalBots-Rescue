@@ -20,7 +20,7 @@ class Level:
     def setup(self, tmx_map):
         # Cargamos la capa de fondo 'backg'
         backg_layer = tmx_map.get_layer_by_name('backg')
-        if (backg_layer):
+        if backg_layer:
             self.background = pygame.Surface((tmx_map.width * tile_size, tmx_map.height * tile_size))
             for x, y, surf in backg_layer.tiles():
                 self.background.blit(surf, (x * tile_size, y * tile_size))
@@ -51,7 +51,7 @@ class Level:
         backgtras_layer = tmx_map.get_layer_by_name('Backgtras')
         if backgtras_layer:
             for obj in backgtras_layer:
-                if obj.name in ['fence', 'barril', 'arbol', 'mig', 'jos', 'dam', 'gre', 'rox', 'nao', 'flechaa', 'flechab','pinchos', 'negro',  'derecha', 'arbu', 'arbust', 'rocab', 'rocag', 'pa', 'st', 'laser', 'laser2', 'laser3', 'fondo', 'picos1', 'picos2', 'picos3']:
+                if obj.name in ['victoria', 'linternal', 'fence', 'barril', 'arbol', 'mig', 'jos', 'dam', 'gre', 'rox', 'nao', 'flechaa', 'flechab','pinchos', 'negro',  'derecha', 'arbu', 'arbust', 'rocab', 'rocag', 'pa', 'st', 'laser', 'laser2', 'laser3', 'fondo', 'picos1', 'picos2', 'picos3']:
                     image_path = f'graphics/Background/{obj.name}.png'  # Asegúrate de tener las imágenes en la carpeta 'graphics/Background'
                     object_image = pygame.image.load(image_path).convert_alpha()
                     object_image = pygame.transform.scale(object_image, (obj.width, obj.height))
@@ -92,6 +92,14 @@ class Level:
         # Verificar si el jugador ha alcanzado alguno de los objetos 'fin'
         for fin_rect, _, _ in self.fin_objects:
             if self.player.hitbox_rect.colliderect(fin_rect):
+                from game_over import GameOverScreen, get_font
+                game_over_screen = GameOverScreen(self.display_surface, get_font(60))
+                game_over_screen.run()  # Mostrar la pantalla de derrota
+                break  # Salir del bucle una vez que se detecta una colisión
+
+        # Verificar si el jugador ha colisionado con algún enemigo
+        for enemy in self.enemy_sprites:
+            if self.player.hitbox_rect.colliderect(enemy.player_hitbox_rect):
                 from game_over import GameOverScreen, get_font
                 game_over_screen = GameOverScreen(self.display_surface, get_font(60))
                 game_over_screen.run()  # Mostrar la pantalla de derrota

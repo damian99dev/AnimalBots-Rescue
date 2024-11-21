@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="150" height="65" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="252">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="150" height="65" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="253">
  <tileset firstgid="1" name="mona china 1" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../../graphics/Protagonist/mona china 1.png" trans="ff00ff" width="32" height="32"/>
  </tileset>
@@ -81,6 +81,9 @@
  <tileset firstgid="4921" name="enemy1" tilewidth="64" tileheight="64" tilecount="1" columns="1">
   <image source="../../graphics/enemies/enemy1.png" trans="ff00ff" width="64" height="64"/>
  </tileset>
+ <tileset firstgid="4922" name="victoria" tilewidth="32" tileheight="64" tilecount="1" columns="1">
+  <image source="../../graphics/Background/victoria.png" trans="ff00ff" width="32" height="64"/>
+ </tileset>
  <layer id="3" name="backg" width="150" height="65" visible="0">
   <data encoding="csv">
 62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -150,7 +153,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="7" name="fondotras"/>
  <objectgroup id="5" name="Backgtras">
   <properties>
    <property name="platfrom" type="object" value="0"/>
@@ -160,7 +162,7 @@
   <object id="242" name="picos2" gid="4919" x="2208" y="1792" width="32" height="32"/>
   <object id="243" name="picos2" gid="4919" x="2208" y="1824" width="32" height="32"/>
   <object id="244" name="picos2" gid="4919" x="2208" y="1856" width="32" height="32"/>
-  <object id="250" name="fondo" gid="4915" x="933" y="1953" width="188" height="104"/>
+  <object id="252" name="victoria" gid="4922" x="1152" y="1824" width="32" height="64"/>
  </objectgroup>
  <layer id="1" name="Suelo" width="150" height="65">
   <data encoding="csv">

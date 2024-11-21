@@ -6,6 +6,7 @@ from options_menu import get_text
 import json
 import cv2 
 import current_level_config
+from victory import NivelManager
                                  # Importar OpenCV  # Importar el módulo de configuración
 
 pygame.init()
@@ -62,7 +63,7 @@ def play():
         LEVEL_5_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(3 * screen_width // 4, screen_height // 2 - 100), 
                                 text_input=get_text("3-1"), font=get_font(40), base_color="#361612", hovering_color="#ffef00")
         LEVEL_6_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(3 * screen_width // 4, screen_height // 2 + 100), 
-                                text_input=get_text("3-3"), font=get_font(40), base_color="#361612", hovering_color="#ff0031")
+                                text_input=get_text("3-2"), font=get_font(40), base_color="#361612", hovering_color="#ff0031")
 
         BACK_BUTTON = Button(image=None, pos=(screen_width // 7, screen_height // 7 + 650), 
                              text_input=get_text("back2"), font=get_font(55), base_color="White", hovering_color="#ffef00")
@@ -79,32 +80,38 @@ def play():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if LEVEL_1_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    current_level_config.current_level = 'prueba.tmx'
+                    NivelManager.nivel_actual = 'prueba.tmx'
+                    current_level_config.current_level = NivelManager.nivel_actual
                     current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
                     game = Game(current_level_config.current_level)  # Cargar el nivel 1
                     game.run()
                 elif LEVEL_2_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    current_level_config.current_level = 'prueba1-2.tmx'
+                    NivelManager.nivel_actual = 'prueba1-2.tmx'
+                    current_level_config.current_level = NivelManager.nivel_actual
                     current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
                     game = Game(current_level_config.current_level)  # Cargar el nivel 2
                     game.run()
                 elif LEVEL_3_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    current_level_config.current_level = 'prueba2.tmx'
+                    NivelManager.nivel_actual = 'prueba2.tmx'
+                    current_level_config.current_level = NivelManager.nivel_actual
                     current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
                     game = Game(current_level_config.current_level)  # Cargar el nivel 3
                     game.run()
                 elif LEVEL_4_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    current_level_config.current_level = 'prueba2-2.tmx'
+                    NivelManager.nivel_actual = 'prueba2-2.tmx'
+                    current_level_config.current_level = NivelManager.nivel_actual
                     current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
                     game = Game(current_level_config.current_level)  # Cargar el nivel 4
                     game.run()
                 elif LEVEL_5_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    current_level_config.current_level = 'prueba3.tmx'
+                    NivelManager.nivel_actual = 'prueba3.tmx'
+                    current_level_config.current_level = NivelManager.nivel_actual
                     current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
                     game = Game(current_level_config.current_level)  # Cargar el nivel 5
                     game.run()
                 elif LEVEL_6_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    current_level_config.current_level = 'prueba3-3.tmx'
+                    NivelManager.nivel_actual = 'prueba3-2.tmx'
+                    current_level_config.current_level = NivelManager.nivel_actual
                     current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
                     game = Game(current_level_config.current_level)  # Cargar el nivel 6
                     game.run()
@@ -113,3 +120,4 @@ def play():
                     main_menu()  # Volver al menú principal
 
         pygame.display.update()
+9

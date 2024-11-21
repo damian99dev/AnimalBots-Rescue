@@ -82,16 +82,16 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
         input_vector = pygame.Vector2(0, 0)
         
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
             input_vector.x += 1
             self.flip = False  # Dirección hacia la derecha
-        if keys[pygame.K_LEFT]:
+        if keys[pygame.K_LEFT] or keys[pygame.K_a]:
             input_vector.x -= 1
             self.flip = True  # Dirección hacia la izquierda
         
         self.direction.x = input_vector.normalize().x if input_vector else input_vector.x
         
-        if keys[pygame.K_SPACE]:
+        if keys[pygame.K_SPACE] or keys[pygame.K_UP] or keys[pygame.K_w]:
             self.jump = True
             
     def move(self, dt):

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="120" height="57" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="234">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="120" height="57" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="235">
  <tileset firstgid="1" name="mona china 1" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../../graphics/Protagonist/mona china 1.png" trans="ff00ff" width="32" height="32"/>
  </tileset>
@@ -68,6 +68,9 @@
  </tileset>
  <tileset firstgid="4917" name="ded" tilewidth="5" tileheight="6" tilecount="1" columns="1">
   <image source="../../graphics/Background/ded.png" trans="ff00ff" width="5" height="6"/>
+ </tileset>
+ <tileset firstgid="4918" name="victoria" tilewidth="32" tileheight="64" tilecount="1" columns="1">
+  <image source="../../graphics/Background/victoria.png" trans="ff00ff" width="32" height="64"/>
  </tileset>
  <layer id="3" name="backg" width="120" height="57">
   <data encoding="csv">
@@ -197,9 +200,8 @@
   <object id="231" name="fin" gid="4917" x="1769.33" y="1696" width="40.3333" height="6"/>
   <object id="233" name="fin" gid="4917" x="2421.83" y="1365.5" width="5" height="6"/>
  </objectgroup>
- <objectgroup id="7" name="fondotras"/>
  <objectgroup id="4" name="enemies">
-  <object id="229" name="enemy" gid="4916" x="768" y="1120" width="64" height="64"/>
+  <object id="229" name="enemy1" gid="4916" x="416" y="1472" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="5" name="Backgtras">
   <properties>
@@ -285,5 +287,6 @@
   <object id="225" name="pa" gid="4915" x="2752" y="1504" width="17" height="16"/>
   <object id="226" name="pa" gid="4915" x="2880" y="1504" width="17" height="16"/>
   <object id="227" name="pa" gid="4915" x="2816" y="1504" width="17" height="16"/>
+  <object id="234" name="victoria" gid="4918" x="3392" y="864" width="32" height="64"/>
  </objectgroup>
 </map>

@@ -1,7 +1,7 @@
 import pygame
 import sys
 import cv2
-from moviepy.editor import VideoFileClip
+from moviepy import VideoFileClip
 from main_menu import main_menu
 
 pygame.init()

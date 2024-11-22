@@ -52,17 +52,17 @@ def play():
         SCREEN.blit(LEVEL_TEXT, LEVEL_RECT)
 
         # Crea botones para los niveles y el botón de retroceso en forma de zigzag
-        LEVEL_1_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(screen_width // 4, screen_height // 2 - 100), 
+        LEVEL_1_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(screen_width // 4 - 170, screen_height // 2 - 100 + 100), 
                                 text_input=get_text("1-1"), font=get_font(40), base_color="#361612", hovering_color="#38bc0f")
-        LEVEL_2_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(screen_width // 4, screen_height // 2 + 100), 
+        LEVEL_2_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(screen_width // 4 + 50, screen_height // 2 + 100 + 100), 
                                 text_input=get_text("1-2"), font=get_font(40), base_color="#361612", hovering_color="#ffef00")
-        LEVEL_3_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(screen_width // 2, screen_height // 2 - 100), 
+        LEVEL_3_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(screen_width // 2 - 120, screen_height // 2 - 100 + 100), 
                                 text_input=get_text("2-1"), font=get_font(40), base_color="#361612", hovering_color="#ff0031")
-        LEVEL_4_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(screen_width // 2, screen_height // 2 + 100), 
+        LEVEL_4_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(screen_width // 2 + 70, screen_height // 2 + 100 + 100), 
                                 text_input=get_text("2-2"), font=get_font(40), base_color="#361612", hovering_color="#38bc0f")
-        LEVEL_5_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(3 * screen_width // 4, screen_height // 2 - 100), 
+        LEVEL_5_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(3 * screen_width // 4 - 90, screen_height // 2 - 100 + 100), 
                                 text_input=get_text("3-1"), font=get_font(40), base_color="#361612", hovering_color="#ffef00")
-        LEVEL_6_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(3 * screen_width // 4, screen_height // 2 + 100), 
+        LEVEL_6_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(3 * screen_width // 4 + 150, screen_height // 2 + 100 + 100), 
                                 text_input=get_text("3-2"), font=get_font(40), base_color="#361612", hovering_color="#ff0031")
 
         BACK_BUTTON = Button(image=None, pos=(screen_width // 7, screen_height // 7 + 650), 
@@ -120,4 +120,3 @@ def play():
                     main_menu()  # Volver al menú principal
 
         pygame.display.update()
-9

@@ -20,8 +20,6 @@ def get_font(size):                                                 # Función p
 def load_languages():
     with open("languages.json", "r", encoding="utf-8") as f:
         return json.load(f)
-    
-
 def load_config():
     try:
         with open('config.json', 'r') as f:
@@ -41,7 +39,6 @@ def set_volume(sound, volume):
 config = load_config()  # Cargar el volumen guardado
 set_volume(MAIN_MUSIC, config["music_volume"])  # Establecer volumen de música de Game Over
 
-    
 def main_menu():
     global music_playing
     
@@ -55,7 +52,9 @@ def main_menu():
     screen_width, screen_height = pygame.display.get_surface().get_size()
 
     # Cargar la imagen "AMF CORP"!!  
-    amf_corp_image = pygame.image.load("assets/images/ui/AMF CORP.png").convert_alpha()
+    amf_corp_image = pygame.image.load("assets/images/ui/logo1.png").convert_alpha()
+    amf_corp_image = pygame.transform.scale(amf_corp_image, (220, 220))
+
     amf_corp_width, amf_corp_height = amf_corp_image.get_size()
 
     # Crea una fuente
@@ -91,14 +90,16 @@ def main_menu():
 
         # Crear botones del menú principal
         PLAY_BUTTON = Button(image=pygame.image.load("assets/images/ui/play_bt.png"), pos=(screen_width // 2 + 25, screen_height // 1.7), 
-                         text_input=get_text("play"), font=get_font(80), base_color="#361612", hovering_color="#38bc0f")
+                        text_input=get_text("play"), font=get_font(80), base_color="#361612", hovering_color="#38bc0f")
+
         OPTIONS_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla_options_bt.png"), pos=(screen_width // 2 + 22, screen_height // 2 + 230), 
                             text_input=get_text("options"), font=get_font(57), base_color="#361612", hovering_color="white")
+    
         QUIT_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla_exit_bt.png"), pos=(screen_width // 2 + 20, screen_height // 2 + 350), 
                          text_input=get_text("exit"), font=get_font(57), base_color="#361612", hovering_color="#ff0031")
 
         # Dibujar la imagen "AMF CORP" en la esquina inferior derecha
-        SCREEN.blit(amf_corp_image, (screen_width - amf_corp_width, screen_height - amf_corp_height))  # Ajustar para esquina inferior derecha
+        SCREEN.blit(amf_corp_image, (screen_width - amf_corp_width, screen_height - 188))  # Ajustar para esquina inferior derecha
 
         # Dibujar el texto "Beta 1.1.6" en la esquina inferior izquierda
         SCREEN.blit(beta_text, beta_text_rect)
@@ -127,5 +128,3 @@ def main_menu():
                     sys.exit()
 
         pygame.display.update()
-
-# Llama al menú principal cuando el juego se ejecuta

@@ -1,21 +1,19 @@
 from settings import *
-import os
+import pygame
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, groups, collision_sprite):
         super().__init__(groups)
-        # Ruta base
-        base_path = os.path.dirname(__file__)  # Directorio donde está player.py
-        img_folder = os.path.join(base_path, '..', 'graphics', 'Protagonist')
         
         # Cargar las imágenes de la animación
         self.images_right = [
-            pygame.image.load(os.path.join(img_folder, 'mona china 1.png')).convert_alpha(),
-            pygame.image.load(os.path.join(img_folder, 'mona china 2.png')).convert_alpha()
+            pygame.image.load("graphics/Protagonist/mona china 1.png").convert_alpha(),
+            pygame.image.load("graphics/Protagonist/mona china 2.png").convert_alpha()
         ]
         self.images_jump = [
-            pygame.image.load(os.path.join(img_folder, 'salto.png')).convert_alpha()
+            pygame.image.load("graphics/Protagonist/salto.png").convert_alpha()
         ]
+        
         # Crear las imágenes invertidas para la dirección izquierda
         self.images_left = [pygame.transform.flip(image, True, False) for image in self.images_right]
         self.images_jump_left = [pygame.transform.flip(image, True, False) for image in self.images_jump]

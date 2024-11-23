@@ -206,22 +206,6 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,13,13,13,13,13,13,13,13,13,13,14,0,0,0,0,0,0,0,0,0,0,0,0,0,12,13,13,13,13,13,13,13,13,13,13,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="2" name="Objetos">
-  <object id="2" name="player" gid="1" x="288" y="1504" width="32" height="32"/>
-  <object id="146" name="meta" gid="4899" x="3648" y="960" width="32" height="32"/>
-  <object id="233" name="fin" gid="4917" x="2208" y="1646.67" width="1595.67" height="116.667"/>
-  <object id="276" name="fin" gid="4917" x="2483.83" y="1015.5" width="5" height="6"/>
-  <object id="277" name="fin" gid="4917" x="3008" y="1056" width="12.75" height="54"/>
-  <object id="278" name="fin" gid="4917" x="3219.25" y="1055.75" width="12.75" height="53.5"/>
-  <object id="260" name="fin" gid="4917" x="1761.33" y="1664" width="419.667" height="6"/>
-  <object id="259" name="fin" gid="4917" x="960.497" y="1504.17" width="801" height="6"/>
- </objectgroup>
- <objectgroup id="4" name="enemies">
-  <object id="229" name="enemy1" gid="4916" x="800" y="1504" width="64" height="64"/>
-  <object id="279" name="enemy1" gid="4916" x="2656" y="1504" width="64" height="64"/>
-  <object id="280" name="enemy1" gid="4916" x="2944" y="1504" width="64" height="64"/>
-  <object id="281" name="enemy1" gid="4916" x="3232" y="1504" width="64" height="64"/>
- </objectgroup>
  <objectgroup id="5" name="Backgtras">
   <properties>
    <property name="platfrom" type="object" value="0"/>
@@ -311,5 +295,21 @@
   <object id="349" name="linternal" gid="4921" x="3554.67" y="889.333" width="32" height="64"/>
   <object id="350" name="linternal" gid="4921" x="3694.67" y="889.667" width="32" height="64"/>
   <object id="351" name="victoria" gid="4922" x="3648" y="960" width="32" height="64"/>
+ </objectgroup>
+ <objectgroup id="4" name="enemies">
+  <object id="229" name="enemy1" gid="4916" x="800" y="1504" width="64" height="64"/>
+  <object id="279" name="enemy1" gid="4916" x="2656" y="1504" width="64" height="64"/>
+  <object id="280" name="enemy1" gid="4916" x="2944" y="1504" width="64" height="64"/>
+  <object id="281" name="enemy1" gid="4916" x="3232" y="1504" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup id="2" name="Objetos">
+  <object id="2" name="player" gid="1" x="288" y="1504" width="32" height="32"/>
+  <object id="146" name="meta" gid="4899" x="3648" y="960" width="32" height="32"/>
+  <object id="233" name="fin" gid="4917" x="2208" y="1646.67" width="1595.67" height="116.667"/>
+  <object id="276" name="fin" gid="4917" x="2483.83" y="1015.5" width="5" height="6"/>
+  <object id="277" name="fin" gid="4917" x="3008" y="1056" width="12.75" height="54"/>
+  <object id="278" name="fin" gid="4917" x="3219.25" y="1055.75" width="12.75" height="53.5"/>
+  <object id="260" name="fin" gid="4917" x="1761.33" y="1664" width="419.667" height="6"/>
+  <object id="259" name="fin" gid="4917" x="960.497" y="1504.17" width="801" height="6"/>
  </objectgroup>
 </map>

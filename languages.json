@@ -13,7 +13,7 @@
         "advanced": "Advanced",
         "back2": "Back",
         "game_over": "GAME OVER",
-        "level_text": "SELELCT LEVEL",
+        "level_text": "SELECT LEVEL",
         "victory": "YOU WON! :D",
         "next": "Next"
 
@@ -28,12 +28,12 @@
         "beginner": "Principiante",
         "resume": "JUGAR",
         "menu": "MENÚ",
-        "medium": "Medio",
+        "medium": "Intermedio",
         "advanced": "Avanzado",
         "back2": "Volver",
         "game_over": "JUEGO TERMINADO",
         "level_text": "SELECCIONA NIVEL",
-        "victory": "¡GANASTE! :D",
+        "victory": "¡GANASTE!",
         "next": "Siguiente",
         "retry": "Reintentar"
 

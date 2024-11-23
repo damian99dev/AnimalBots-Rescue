@@ -16,7 +16,7 @@ def get_font(size):                                                     # Funci√
 
 # Cargar idiomas
 def load_languages():
-    with open("languages.json", "r", encoding="utf-8") as f:
+    with open("src/languages.json", "r", encoding="utf-8") as f:
         return json.load(f)
 
 # Guardar idioma en config.json

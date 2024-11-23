@@ -557,23 +557,22 @@
   <object id="675" name="fence" gid="5779" x="4320" y="1088" width="75" height="28"/>
  </objectgroup>
  <objectgroup id="4" name="enemies">
-  <object id="251" name="enemy1" gid="4921" x="256" y="1440" width="64" height="64"/>
-  <object id="254" name="enemy1" gid="4921" x="448" y="1440" width="64" height="64"/>
-  <object id="255" name="enemy1" gid="4921" x="640" y="1440" width="64" height="64"/>
-  <object id="363" name="enemy1" gid="4921" x="1184" y="1920" width="64" height="64"/>
-  <object id="364" name="enemy1" gid="4921" x="1696" y="1920" width="64" height="64"/>
-  <object id="365" name="enemy1" gid="4921" x="1440" y="1920" width="64" height="64"/>
-  <object id="371" name="enemy1" gid="4921" x="2272" y="1760" width="64" height="64"/>
+  <object id="251" name="enemy1" gid="4921" x="256" y="1280" width="64" height="64"/>
+  <object id="254" name="enemy1" gid="4921" x="448" y="1280" width="64" height="64"/>
+  <object id="255" name="enemy1" gid="4921" x="672" y="1344" width="64" height="64"/>
+  <object id="363" name="enemy1" gid="4921" x="1184" y="1824" width="64" height="64"/>
+  <object id="364" name="enemy1" gid="4921" x="1696" y="1824" width="64" height="64"/>
+  <object id="365" name="enemy1" gid="4921" x="1440" y="1824" width="64" height="64"/>
+  <object id="371" name="enemy1" gid="4921" x="2176" y="1664" width="64" height="64"/>
   <object id="372" name="enemy1" gid="4921" x="2880" y="1824" width="64" height="64"/>
   <object id="373" name="enemy1" gid="4921" x="3040" y="1824" width="64" height="64"/>
   <object id="374" name="enemy1" gid="4921" x="3232" y="1824" width="64" height="64"/>
-  <object id="439" name="enemy1" gid="4921" x="3552" y="1280" width="64" height="64"/>
-  <object id="440" name="enemy1" gid="4921" x="3744" y="1280" width="64" height="64"/>
-  <object id="441" name="enemy1" gid="4921" x="3936" y="1280" width="64" height="64"/>
-  <object id="442" name="enemy1" gid="4921" x="4128" y="1280" width="64" height="64"/>
+  <object id="440" name="enemy1" gid="4921" x="3680" y="1216" width="64" height="64"/>
+  <object id="441" name="enemy1" gid="4921" x="3872" y="1216" width="64" height="64"/>
+  <object id="442" name="enemy1" gid="4921" x="4064" y="1216" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="2" name="Objetos">
-  <object id="2" name="player" gid="1" x="256" y="1664" width="32" height="32"/>
+  <object id="2" name="player" gid="1" x="253.333" y="1601" width="32" height="32"/>
   <object id="146" name="meta" gid="4898" x="4655.88" y="1952.94" width="32" height="32"/>
   <object id="247" name="fin" gid="4917" x="2422" y="1806" width="10.6667" height="158"/>
   <object id="388" name="fin" gid="4917" x="3749.86" y="1919.36" width="18.0909" height="6"/>

@@ -3,7 +3,7 @@ from settings import *
 from sprites import Sprite
 from player import Player
 from groups import AllSprites  # Importamos AllSprites para su uso en el nivel
-from enemy import Enemy  # Importar la clase Enemy
+from enemy import Enemy, Enemy3  # Importar la clase Enemy y Enemy3
 from game_over import GameOverScreen, get_font  # Importar GameOverScreen y get_font
 
 class Level:
@@ -51,7 +51,7 @@ class Level:
         backgtras_layer = tmx_map.get_layer_by_name('Backgtras')
         if backgtras_layer:
             for obj in backgtras_layer:
-                if obj.name in ['yo', 'gemaB', 'gemaM','dino', 'rac', 'compu', 'cajas3', 'caja', 'compu2', 'cosa', 'estalactitas', 'victoria', 'linternal', 'fence', 'barril', 'arbol', 'mig', 'jos', 'dam', 'gre', 'rox', 'nao', 'flechaa', 'flechab','pinchos', 'negro',  'derecha', 'arbu', 'arbust', 'rocab', 'rocag', 'pa', 'st', 'laser', 'laser2', 'laser3', 'fondo', 'picos1', 'picos2', 'picos3']:
+                if obj.name in ['mancha', 'estalactitas2', 'yo', 'gemaB', 'gemaM','dino', 'rac', 'compu', 'cajas3', 'caja', 'compu2', 'cosa', 'estalactitas', 'victoria', 'linternal', 'fence', 'barril', 'arbol', 'mig', 'jos', 'dam', 'gre', 'rox', 'nao', 'flechaa', 'flechab','pinchos', 'negro',  'derecha', 'arbu', 'arbust', 'rocab', 'rocag', 'pa', 'st', 'laser', 'laser2','xor',  'laser3', 'fondo', 'picos1', 'naonao', 'picos2', 'picos3']:
                     image_path = f'graphics/Background/{obj.name}.png'  # Asegúrate de tener las imágenes en la carpeta 'graphics/Background'
                     object_image = pygame.image.load(image_path).convert_alpha()
                     object_image = pygame.transform.scale(object_image, (obj.width, obj.height))
@@ -72,9 +72,20 @@ class Level:
                     enemy = Enemy((obj.x, obj.y), enemy_images, self.collision_sprites)
                     self.all_sprites.add(enemy)
                     self.enemy_sprites.add(enemy)
+                elif obj.name == 'enemy3':
+                    image_path1 = 'graphics/enemies/boss.png'
+                    image_path2 = 'graphics/enemies/boss2.png'
+                    enemy_image1 = pygame.image.load(image_path1).convert_alpha()
+                    enemy_image2 = pygame.image.load(image_path2).convert_alpha()
+                    enemy_image1 = pygame.transform.scale(enemy_image1, (obj.width, obj.height))
+                    enemy_image2 = pygame.transform.scale(enemy_image2, (obj.width, obj.height))
+                    enemy_images = [enemy_image1, enemy_image2]
+                    enemy3 = Enemy3((obj.x, obj.y), enemy_images, self.collision_sprites)
+                    self.all_sprites.add(enemy3)
+                    self.enemy_sprites.add(enemy3)
 
     def run(self, dt):
-        # Dibujamos el fondo si está cargado
+        # Dibujamos el fondo si esta cargado
         if self.background:
             self.display_surface.blit(self.background, (0, 0))
     

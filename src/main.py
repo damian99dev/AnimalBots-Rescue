@@ -65,3 +65,4 @@ def play_intro_video(video_path):
 if __name__ == "__main__":
     play_intro_video("assets/images/backgrounds/michi.mp4")
 main_menu()
+-

@@ -7,8 +7,8 @@ class Enemy(pygame.sprite.Sprite):
         self.images = images
         self.image = self.images[0]
         self.rect = self.image.get_rect(topleft=pos)
-        self.hitbox_rect = self.rect.inflate(-10, -3)  # Rectángulo de colisión con las paredes
-        self.player_hitbox_rect = self.rect.inflate(-20, -80)  # Rectángulo de colisión con el jugador
+        self.hitbox_rect = self.rect.copy()
+        self.player_hitbox_rect = self.rect.copy()
         self.direction = pygame.Vector2(1, 0)  # Movimiento hacia la derecha
         self.speed = 150
         self.collision_sprites = collision_sprites
@@ -68,3 +68,38 @@ class Enemy(pygame.sprite.Sprite):
 
         # Animar el enemigo
         self.animate(dt)
+
+class Enemy3(Enemy):
+    def __init__(self, pos, images, collision_sprites):
+        super().__init__(pos, images, collision_sprites)
+        self.rect.size = (200, 200)
+        self.hitbox_rect.size = (180, 200)  # Ajustar el tamaño de la hitbox
+        self.player_hitbox_rect.size = (120, 125)  # Ajustar el tamaño de la hitbox de colisión con el jugador
+        self.jump_force = -500  # Fuerza del salto, ajusta según sea necesario
+
+    def jump(self):
+        if self.on_ground:
+            self.direction.y = self.jump_force
+            self.on_ground = False
+
+    def apply_gravity(self, dt):
+        super().apply_gravity(dt)
+        # Variaciones específicas de Enemy3 en la gravedad
+
+    def check_ground_collision(self):
+        self.on_ground = False
+        for sprite in self.collision_sprites:
+            if self.hitbox_rect.colliderect(sprite.rect):
+                if self.direction.y > 0:  # Falling
+                    self.hitbox_rect.bottom = sprite.rect.top
+                    self.direction.y = 0
+                    self.on_ground = True
+                    self.jump()  # Llamar al método jump cuando toca el suelo
+
+    def animate(self, dt):
+        super().animate(dt)
+        # Variaciones específicas de Enemy3 en la animación
+
+    def update(self, dt):
+        super().update(dt)
+        # Variaciones específicas de Enemy3 en la actualización

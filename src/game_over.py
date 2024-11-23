@@ -100,15 +100,37 @@ class GameOverScreen:
                 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if RETRY_BT.checkForInput(LEVEL_MOUSE_POS):
+                        # Detener música de Game Over
+                        GAMEOVER_MUSIC.stop()
+                        
+                        # Reproducir la música del nivel actual
+                        if current_level_config.current_level == 'prueba.tmx':
+                            pygame.mixer.music.load("assets/sounds/music/Hypertext.mp3")
+                        elif current_level_config.current_level == 'prueba1-2.tmx':
+                            pygame.mixer.music.load("assets/sounds/music/Deal 'Em Out.mp3")
+                        elif current_level_config.current_level == 'prueba2.tmx':
+                            pygame.mixer.music.load("assets/sounds/music/Waterfall.mp3")
+                        elif current_level_config.current_level == 'prueba2-2.tmx':
+                            pygame.mixer.music.load("assets/sounds/music/Ruins.mp3")
+                        elif current_level_config.current_level == 'prueba3.tmx':
+                            pygame.mixer.music.load("assets/sounds/music/Another Medium.mp3")
+                        elif current_level_config.current_level == 'prueba3-2.tmx':
+                            pygame.mixer.music.load("assets/sounds/music/CORE.mp3")
+                        
+                        # Reproducir la canción en bucle
+                        pygame.mixer.music.play(-1)
+                        
+                        # Cargar y reiniciar el nivel actual
                         from game_class import Game
-                        game = Game(current_level_config.current_level)  # Cargar el nivel actual desde config
+                        game = Game(current_level_config.current_level)
                         game.run()
-
+                    
                     elif EXIT_BT.checkForInput(LEVEL_MOUSE_POS):
                         pygame.quit()
                         sys.exit()
                     
-                    elif MENU_BT.checkForInput(LEVEL_MOUSE_POS):    
+                    elif MENU_BT.checkForInput(LEVEL_MOUSE_POS):
+                        # Detener música de Game Over y regresar al menú principal
                         GAMEOVER_MUSIC.stop()
                         if not music_playing:
                             pygame.mixer.music.load("assets/sounds/music/Main Menu.mp3")

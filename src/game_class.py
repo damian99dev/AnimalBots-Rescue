@@ -60,8 +60,8 @@ class Game:
         self.start_time = pygame.time.get_ticks()  # Tiempo al que se inicia el juego
 
         # Reproducir música del nivel
-        pygame.mixer.music.load("assets\sounds\music\Hypertext.mp3")
-        pygame.mixer.music.play(-1)
+        #pygame.mixer.music.load("assets/sounds/music/vacio.mp3")
+        #pygame.mixer.music.play(-1)
 
 
     def run(self):

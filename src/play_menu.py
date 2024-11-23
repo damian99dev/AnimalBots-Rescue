@@ -7,6 +7,7 @@ import json
 import cv2 
 import current_level_config
 from victory import NivelManager
+from moviepy import VideoFileClip
 
 pygame.init()
 
@@ -27,6 +28,56 @@ def get_font(size):                                                 # Función p
 def load_languages():
     with open("languages.json", "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+
+def play_video(video_path):
+    video_clip = VideoFileClip(video_path)
+    audio = video_clip.audio
+    audio.write_audiofile("temp_audio.mp3")
+    fps = video_clip.fps
+
+    pygame.mixer.init()
+    pygame.mixer.music.load("temp_audio.mp3")
+    pygame.mixer.music.play()
+
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        print("Error: No se pudo cargar el video.")
+        return
+
+    clock = pygame.time.Clock()
+
+    while True:
+        ret, frame = cap.read()
+        if not ret:  # Si el video ha terminado, salir del bucle
+            pygame.mixer.music.load("assets/sounds/music/Spider Dance.mp3")
+            pygame.mixer.music.play(-1)
+            break
+
+        frame = cv2.flip(frame, 1)
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frame = cv2.resize(frame, (1820, 920))
+        frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+        frame_surface = pygame.surfarray.make_surface(frame)
+
+        # Dibuja el frame en la pantalla
+        SCREEN.blit(frame_surface, (0, 0))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                cap.release()
+                pygame.mixer.music.stop()
+                pygame.quit()
+                sys.exit()
+
+        pygame.display.update()
+        clock.tick(fps)
+
+    cap.release()
+    pygame.mixer.music.stop()
+
+
 
 def play():
     while True:  # Pantalla de selección de niveles
@@ -96,44 +147,57 @@ def play():
                 sys.exit()
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if LEVEL_1_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    NivelManager.nivel_actual = 'prueba.tmx'
-                    current_level_config.current_level = NivelManager.nivel_actual
-                    current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
-                    game = Game(current_level_config.current_level)  # Cargar el nivel 1
-                    game.run()
-                elif LEVEL_2_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    NivelManager.nivel_actual = 'prueba1-2.tmx'
-                    current_level_config.current_level = NivelManager.nivel_actual
-                    current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
-                    game = Game(current_level_config.current_level)  # Cargar el nivel 2
-                    game.run()
-                elif LEVEL_3_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    NivelManager.nivel_actual = 'prueba2.tmx'
-                    current_level_config.current_level = NivelManager.nivel_actual
-                    current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
-                    game = Game(current_level_config.current_level)  # Cargar el nivel 3
-                    game.run()
-                elif LEVEL_4_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    NivelManager.nivel_actual = 'prueba2-2.tmx'
-                    current_level_config.current_level = NivelManager.nivel_actual
-                    current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
-                    game = Game(current_level_config.current_level)  # Cargar el nivel 4
-                    game.run()
-                elif LEVEL_5_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    NivelManager.nivel_actual = 'prueba3.tmx'
-                    current_level_config.current_level = NivelManager.nivel_actual
-                    current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
-                    game = Game(current_level_config.current_level)  # Cargar el nivel 5
-                    game.run()
-                elif LEVEL_6_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    NivelManager.nivel_actual = 'prueba3-2.tmx'
-                    current_level_config.current_level = NivelManager.nivel_actual
-                    current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
-                    game = Game(current_level_config.current_level)  # Cargar el nivel 6
-                    game.run()
-                elif BACK_BUTTON.checkForInput(LEVEL_MOUSE_POS):
-                    from main_menu import main_menu
-                    main_menu()  # Volver al menú principal
+                        if LEVEL_1_BUTTON.checkForInput(LEVEL_MOUSE_POS):
+                            play_video("assets/images/backgrounds/historia_parte1.mp4")  # Reproduce el video
+                            pygame.mixer.music.load("assets/sounds/music/Hypertext.mp3")
+                            pygame.mixer.music.play(-1)
+                            NivelManager.nivel_actual = 'prueba.tmx'
+                            current_level_config.current_level = NivelManager.nivel_actual
+                            current_level_config.save_current_level(current_level_config.current_level)
+                            game = Game(current_level_config.current_level)
+                            game.run()
+                        elif LEVEL_2_BUTTON.checkForInput(LEVEL_MOUSE_POS):
+                            pygame.mixer.music.load("assets/sounds/music/Deal 'Em Out.mp3")
+                            pygame.mixer.music.play(-1)
+                            NivelManager.nivel_actual = 'prueba1-2.tmx'
+                            current_level_config.current_level = NivelManager.nivel_actual
+                            current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
+                            game = Game(current_level_config.current_level)  # Cargar el nivel 2
+                            game.run()
+                        elif LEVEL_3_BUTTON.checkForInput(LEVEL_MOUSE_POS):
+                            pygame.mixer.music.load("assets/sounds/music/Waterfall.mp3")
+                            pygame.mixer.music.play(-1)
+                            NivelManager.nivel_actual = 'prueba2.tmx'
+                            current_level_config.current_level = NivelManager.nivel_actual
+                            current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
+                            game = Game(current_level_config.current_level)  # Cargar el nivel 3
+                            game.run()
+                        elif LEVEL_4_BUTTON.checkForInput(LEVEL_MOUSE_POS):
+                            pygame.mixer.music.load("assets/sounds/music/Ruins.mp3")
+                            pygame.mixer.music.play(-1)
+                            NivelManager.nivel_actual = 'prueba2-2.tmx'
+                            current_level_config.current_level = NivelManager.nivel_actual
+                            current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
+                            game = Game(current_level_config.current_level)  # Cargar el nivel 4
+                            game.run()
+                        elif LEVEL_5_BUTTON.checkForInput(LEVEL_MOUSE_POS):
+                            pygame.mixer.music.load("assets/sounds/music/Another Medium.mp3")
+                            pygame.mixer.music.play(-1)
+                            NivelManager.nivel_actual = 'prueba3.tmx'
+                            current_level_config.current_level = NivelManager.nivel_actual
+                            current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
+                            game = Game(current_level_config.current_level)  # Cargar el nivel 5
+                            game.run()
+                        elif LEVEL_6_BUTTON.checkForInput(LEVEL_MOUSE_POS):
+                            pygame.mixer.music.load("assets/sounds/music/CORE.mp3")
+                            pygame.mixer.music.play(-1)
+                            NivelManager.nivel_actual = 'prueba3-2.tmx'
+                            current_level_config.current_level = NivelManager.nivel_actual
+                            current_level_config.save_current_level(current_level_config.current_level)  # Guardar el nivel actual
+                            game = Game(current_level_config.current_level)  # Cargar el nivel 6
+                            game.run()
+                        elif BACK_BUTTON.checkForInput(LEVEL_MOUSE_POS):
+                            from main_menu import main_menu
+                            main_menu()  # Volver al menú principal
 
         pygame.display.update()

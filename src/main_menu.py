@@ -1,6 +1,8 @@
 import pygame, sys                  # Importa Pygame para el motor del juego y sys para la gestión del sistema
 from button import Button           # Importa la clase Button para todos los botones del menú
 from options_menu import get_text
+from play_menu import play
+
 import json                         # 
 import cv2                          # Importar OpenCV
 
@@ -116,7 +118,6 @@ def main_menu():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    from play_menu import play
                     play()  # Inicia la pantalla de selección de niveles
                 if OPTIONS_BUTTON.checkForInput(MENU_MOUSE_POS):
                     from options_menu import options

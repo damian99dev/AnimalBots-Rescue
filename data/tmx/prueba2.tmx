@@ -297,19 +297,12 @@
   <object id="678" name="enemy1" gid="4921" x="192" y="576" width="64" height="64"/>
   <object id="679" name="enemy1" gid="4921" x="576" y="576" width="64" height="64"/>
   <object id="680" name="enemy1" gid="4921" x="768" y="576" width="64" height="64"/>
-  <object id="709" name="enemy1" gid="4921" x="416" y="512" width="64" height="64"/>
-  <object id="710" name="enemy1" gid="4921" x="224" y="512" width="64" height="64"/>
-  <object id="711" name="enemy1" gid="4921" x="608" y="512" width="64" height="64"/>
-  <object id="712" name="enemy1" gid="4921" x="800" y="512" width="64" height="64"/>
   <object id="713" name="enemy1" gid="4921" x="960" y="576" width="64" height="64"/>
-  <object id="714" name="enemy1" gid="4921" x="992" y="512" width="64" height="64"/>
   <object id="715" name="enemy1" gid="4921" x="1152" y="576" width="64" height="64"/>
-  <object id="716" name="enemy1" gid="4921" x="1184" y="512" width="64" height="64"/>
   <object id="717" name="enemy1" gid="4921" x="1344" y="576" width="64" height="64"/>
-  <object id="718" name="enemy1" gid="4921" x="1376" y="512" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="2" name="Objetos">
-  <object id="2" name="player" gid="1" x="288" y="1120" width="32" height="32"/>
+  <object id="2" name="player" gid="1" x="864" y="800" width="32" height="32"/>
   <object id="676" name="meta" gid="4898" x="4096" y="384" width="32" height="32"/>
   <object id="707" name="fin" gid="4917" x="479.5" y="1888" width="127.5" height="6"/>
   <object id="708" name="fin" gid="4917" x="1344.5" y="1858.25" width="735.5" height="10.4941"/>

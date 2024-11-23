@@ -1,9 +1,8 @@
-import pygame
-import sys
-import cv2
-from moviepy import VideoFileClip
+import pygame                     
 from main_menu import main_menu
-
+import cv2
+import sys
+from moviepy import VideoFileClip
 pygame.init()
 
 

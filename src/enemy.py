@@ -21,7 +21,7 @@ class Enemy(pygame.sprite.Sprite):
         # Ajustar el tamaño de la hitbox
         self.hitbox_rect.size = (64, 64)
         # Ajustar el tamaño de la hitbox de colisión con el jugador
-        self.player_hitbox_rect.size = (40, 40)
+        self.player_hitbox_rect.size = (35, 35)
 
     def apply_gravity(self, dt):
         if not self.on_ground:

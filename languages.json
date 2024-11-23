@@ -14,7 +14,7 @@
         "back2": "Back",
         "game_over": "GAME OVER",
         "level_text": "SELELCT LEVEL",
-        "victory": "YOU WON! :D",
+        "victory": "YOU WON!",
         "next": "Next"
 
     },
@@ -33,7 +33,7 @@
         "back2": "Volver",
         "game_over": "JUEGO TERMINADO",
         "level_text": "SELECCIONA NIVEL",
-        "victory": "¡GANASTE! :D",
+        "victory": "¡GANASTE!",
         "next": "Siguiente",
         "retry": "Reintentar"
 

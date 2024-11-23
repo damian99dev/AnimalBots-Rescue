@@ -6,7 +6,8 @@ from main_menu import main_menu
 
 pygame.init()
 
-SCREEN = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN)
+
+SCREEN = pygame.display.set_mode((1820, 920), pygame.FULLSCREEN)
 pygame.display.set_caption("AnimalBots Rescue")
 
 def play_intro_video(video_path):
@@ -37,7 +38,7 @@ def play_intro_video(video_path):
 
         frame = cv2.flip(frame, 1)
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        frame = cv2.resize(frame, (1820, 920))
+        frame = cv2.resize(frame, (1550, 870))
         frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
         frame_surface = pygame.surfarray.make_surface(frame)
 

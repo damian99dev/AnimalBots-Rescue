@@ -20,12 +20,13 @@ def save_config(music_volume):  # Elimina effects_volume
 
 # Inicializamos Pygame y la pantalla
 pygame.init()
+
+VICTORY_MUSIC = pygame.mixer.Sound("assets/sounds/music/End and Thanks!.flac")
 SCREEN = pygame.display.set_mode((1920, 1080), pygame.FULLSCREEN) 
 pygame.display.set_caption("Hurra!")
 
 # Cargar música de victoria
-VICTORY_MUSIC = pygame.mixer.Sound("assets/sounds/music/End and Thanks!.flac")
-WINBANJO = pygame.mixer.Sound("assets/sounds/fx/winbanjo.mp3")
+WINBANJO = pygame.mixer.Sound("assets/sounds/music/Dating Start!.mp3")
 
 # Cargar imágenes y fuentes
 BG_IMAGE = pygame.image.load("assets/images/backgrounds/win_bgg.jpg")
@@ -36,8 +37,8 @@ def set_volume(sound, volume):                            # Establece el volumen
 
 # Cargar volumen desde la configuración
 config = load_config()  # Cargar el volumen guardado
-set_volume(VICTORY_MUSIC, config["music_volume"])  # Establecer volumen de música de victoria
 set_volume(WINBANJO, config["music_volume"])  # Establecer volumen de WINBANJO
+set_volume(VICTORY_MUSIC, config["music_volume"])  # Establecer volumen de música 
 
 def get_font(size):                                                 # Función para obtener la fuente con un tamaño específico
     return pygame.font.Font("assets/fonts/font1.otf", size)
@@ -65,19 +66,19 @@ class VictoryScreen:
         
         pygame.mixer.music.fadeout(1000)  # Fundido de salida de la música actual en 8 segundos
         pygame.mixer.music.pause()  # Pausar la música
+        pygame.mixer.music.load("assets/sounds/music/Dating Start!.mp3")
+        pygame.mixer.music.play(-1)
         # Control de sonido
         self.sound_stage = 0  # Etapa inicial de la reproducción de sonidos
         self.sound_timer = pygame.time.get_ticks()  # Guardar el tiempo actual
         self.sound_duration = WINBANJO.get_length() * 1000  # Duración de WINBANJO en milisegundos
 
-        # Empezar con el sonido WINBANJO
-        pygame.mixer.music.load("assets/sounds/fx/winbanjo.mp3")
-        pygame.mixer.music.play()
         
 
     def run(self):
         while True:
-            
+    
+
             LEVEL_MOUSE_POS = pygame.mouse.get_pos()  
 
             NEXT_BT = Button(image=pygame.image.load("assets/images/ui/next_bt.png"),
@@ -107,10 +108,8 @@ class VictoryScreen:
                 button.changeColor(LEVEL_MOUSE_POS)
                 button.update(SCREEN)
 
-            # Controlar la secuencia de los sonidos
-            self.play_next_sound()
             # Lista de niveles en orden
-
+            
             # Variables
             music_playing = False
 
@@ -122,18 +121,38 @@ class VictoryScreen:
                 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if NEXT_BT.checkForInput(LEVEL_MOUSE_POS):
-                        # Llama a la clase de gestión de niveles
+                        VICTORY_MUSIC.stop()
                         NivelManager.siguiente_nivel()
                         if NivelManager.nivel_actual:
-                            VICTORY_MUSIC.stop()
+                            # Detener música de victoria
+                            pygame.mixer.music.stop()
+
+                            # Determinar la canción del siguiente nivel
+                            if NivelManager.nivel_actual == 'prueba.tmx':
+                                pygame.mixer.music.load("assets/sounds/music/Hypertext.mp3")
+                            elif NivelManager.nivel_actual == 'prueba1-2.tmx':
+                                pygame.mixer.music.load("assets/sounds/music/Deal 'Em Out.mp3")
+                            elif NivelManager.nivel_actual == 'prueba2.tmx':
+                                pygame.mixer.music.load("assets/sounds/music/Waterfall.mp3")
+                            elif NivelManager.nivel_actual == 'prueba2-2.tmx':
+                                pygame.mixer.music.load("assets/sounds/music/Ruins.mp3")
+                            elif NivelManager.nivel_actual == 'prueba3.tmx':
+                                pygame.mixer.music.load("assets/sounds/music/Another Medium.mp3")
+                            elif NivelManager.nivel_actual == 'prueba3-2.tmx':
+                                pygame.mixer.music.load("assets/sounds/music/CORE.mp3")
+
+                            # Reproducir la canción del nivel
+                            pygame.mixer.music.play(-1)
+
+                            # Actualizar nivel actual y guardar configuración
                             current_level_config.current_level = NivelManager.nivel_actual
                             current_level_config.save_current_level(current_level_config.current_level)
+
+                            # Iniciar el juego con el nuevo nivel
                             game = Game(NivelManager.nivel_actual)
                             game.run()
-
                         else:
                             # No hay más niveles, regresa al menú
-                            VICTORY_MUSIC.stop()
                             if not music_playing:
                                 pygame.mixer.music.load("assets/sounds/music/Main Menu.mp3")
                                 pygame.mixer.music.play(-1, fade_ms=3000)
@@ -145,8 +164,10 @@ class VictoryScreen:
                         pygame.quit()
                         sys.exit()
                     
-                    elif MENU_BT.checkForInput(LEVEL_MOUSE_POS):    
+                    elif MENU_BT.checkForInput(LEVEL_MOUSE_POS):
                         VICTORY_MUSIC.stop()
+                        
+                        # Regresar al menú principal
                         if not music_playing:
                             pygame.mixer.music.load("assets/sounds/music/Main Menu.mp3")
                             pygame.mixer.music.play(-1, fade_ms=3000)
@@ -157,13 +178,6 @@ class VictoryScreen:
             pygame.display.update()
 
 
-    def play_next_sound(self):
-        current_time = pygame.time.get_ticks()
-
-        # Si WINBANJO ha terminado, reproduce la música de victoria
-        if self.sound_stage == 0 and current_time - self.sound_timer >= self.sound_duration:
-            VICTORY_MUSIC.play(-1, fade_ms=3000)  # Reproduce la música de victoria en bucle
-            self.sound_stage = 1  # Cambia el estado para evitar repetir la música
 
 
 

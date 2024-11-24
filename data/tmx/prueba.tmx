@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="120" height="57" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="264">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="120" height="57" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="268">
  <tileset firstgid="1" name="mona china 1" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../../graphics/Protagonist/mona china 1.png" trans="ff00ff" width="32" height="32"/>
  </tileset>
@@ -282,9 +282,12 @@
   <object id="226" name="pa" gid="4915" x="2880" y="1504" width="17" height="16"/>
   <object id="227" name="pa" gid="4915" x="2816" y="1504" width="17" height="16"/>
   <object id="234" name="victoria" gid="4918" x="3392" y="864" width="32" height="64"/>
-  <object id="261" name="mancha" gid="4919" x="433.667" y="1540.67" width="78.3333" height="50"/>
   <object id="262" name="mancha" gid="4919" x="567" y="1540.5" width="73" height="50"/>
   <object id="263" name="mancha" gid="4919" x="291" y="1541" width="72.75" height="50"/>
+  <object id="264" name="mancha" gid="4919" x="1858" y="1541" width="73" height="50"/>
+  <object id="265" name="mancha" gid="4919" x="2428.5" y="1220.67" width="73" height="50"/>
+  <object id="266" name="mancha" gid="4919" x="3246.5" y="1541" width="73" height="50"/>
+  <object id="267" name="mancha" gid="4919" x="3409.75" y="1540.75" width="73" height="50"/>
  </objectgroup>
  <objectgroup id="4" name="enemies">
   <object id="229" name="enemy1" gid="4916" x="416" y="1472" width="64" height="64"/>
@@ -294,7 +297,7 @@
  </objectgroup>
  <objectgroup id="2" name="Objetos">
   <object id="2" name="player" gid="1" x="848" y="1092" width="32" height="32"/>
-  <object id="146" name="meta" gid="4899" x="3392" y="864" width="32" height="32"/>
+  <object id="146" name="meta" gid="4899" x="3399.5" y="864.663" width="17.5" height="66.3265"/>
   <object id="231" name="fin" gid="4917" x="1769.33" y="1696" width="40.3333" height="6"/>
   <object id="233" name="fin" gid="4917" x="2421.83" y="1365.5" width="5" height="6"/>
  </objectgroup>

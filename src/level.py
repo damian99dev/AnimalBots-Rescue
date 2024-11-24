@@ -3,7 +3,7 @@ from settings import *
 from sprites import Sprite
 from player import Player
 from groups import AllSprites  # Importamos AllSprites para su uso en el nivel
-from enemy import Enemy, Enemy3  # Importar la clase Enemy y Enemy3
+from enemy import Enemy, Enemy3, Enemy4  # Importar la clase Enemy, Enemy3 y Enemy4
 from game_over import GameOverScreen, get_font  # Importar GameOverScreen y get_font
 
 class Level:
@@ -83,6 +83,23 @@ class Level:
                     enemy3 = Enemy3((obj.x, obj.y), enemy_images, self.collision_sprites)
                     self.all_sprites.add(enemy3)
                     self.enemy_sprites.add(enemy3)
+                elif obj.name == 'enemy4':
+                    image_paths = [
+                        'graphics/enemies/toro2.png',
+                        'graphics/enemies/toro3.png',
+                        'graphics/enemies/toro4.png',
+                        'graphics/enemies/toro5.png',
+                        'graphics/enemies/toro6.png',
+                        'graphics/enemies/toro7.png'
+                    ]
+                    enemy_images = []
+                    for image_path in image_paths:
+                        enemy_image = pygame.image.load(image_path).convert_alpha()
+                        enemy_image = pygame.transform.scale(enemy_image, (obj.width, obj.height))
+                        enemy_images.append(enemy_image)
+                    enemy4 = Enemy4((obj.x, obj.y), enemy_images, self.collision_sprites)
+                    self.all_sprites.add(enemy4)
+                    self.enemy_sprites.add(enemy4)
 
     def run(self, dt):
         # Dibujamos el fondo si esta cargado

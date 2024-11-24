@@ -29,10 +29,10 @@ PAUSE_BUTTON_IMAGE = pygame.transform.scale(PAUSE_BUTTON_IMAGE, (int(PAUSE_BUTTO
                                                                  int(PAUSE_BUTTON_IMAGE.get_height() * 1.9)))
 PAUSE_BUTTON_RECT = PAUSE_BUTTON_IMAGE.get_rect(topleft=(1440, 10))       # Coloca en la esquina superior izquierda
 
-#HEALTH_BAR_IMAGE = pygame.image.load("graphics/ui/game_elements/corazones daño3.png")
-#HEALTH_BAR_IMAGE = pygame.transform.scale(HEALTH_BAR_IMAGE, (int(HEALTH_BAR_IMAGE.get_width() * 0.3),  # Ajusta el tamaño de la barra de salud
-#                                                               int(HEALTH_BAR_IMAGE.get_height() * 0.3)))
-#HEALTH_BAR_POS = HEALTH_BAR_IMAGE.get_rect(topleft=(-50, -50))      # Coloca en la esquina superior izquierda
+HEALTH_BAR_IMAGE = pygame.image.load("graphics/ui/game_elements/corazones daño3.png")
+HEALTH_BAR_IMAGE = pygame.transform.scale(HEALTH_BAR_IMAGE, (int(HEALTH_BAR_IMAGE.get_width() * 0.3),  # Ajusta el tamaño de la barra de salud
+                                                               int(HEALTH_BAR_IMAGE.get_height() * 0.3)))
+HEALTH_BAR_POS = HEALTH_BAR_IMAGE.get_rect(topleft=(-50, -50))      # Coloca en la esquina superior izquierda
 
 def get_font(size):                                                 # Función para obtener la fuente con un tamaño específico
     return pygame.font.Font("assets/fonts/font1.otf", size)
@@ -64,6 +64,7 @@ class Game:
         # Imagen del tutorial
         self.tutorial_image = pygame.image.load("assets/images/ui/tutorial_bgg.png")  # Ruta de la imagen del tutorial
         self.tutorial_image = pygame.transform.scale(self.tutorial_image, (1920, 1080))  # Ajusta al tamaño de la pantalla
+           # Imagen del fondo del timer
 
 
 
@@ -123,7 +124,8 @@ class Game:
             else:
                 self.current_stage.run(dt)
                 self.update_timer()  # Solo actualiza el temporizador si no está pausado
-
+                
+            SCREEN.blit(HEALTH_BAR_IMAGE, HEALTH_BAR_POS)
             SCREEN.blit(TUT_BUTTON_IMAGE, TUT_BUTTON_RECT)
             SCREEN.blit(PAUSE_BUTTON_IMAGE, PAUSE_BUTTON_RECT)
             pygame.display.update()
@@ -132,10 +134,13 @@ class Game:
 
     def update_timer(self):
         if not self.paused:  # Asegúrate de que el temporizador no se actualice si está pausado
+            self.timer_button_image = pygame.image.load("assets/images/ui/timer_btt.png").convert_alpha()
+            self.timer_button_rect = self.timer_button_image.get_rect(center=(765, 55))  
+            self.display_surface.blit(self.timer_button_image, self.timer_button_rect)
             elapsed_time = (pygame.time.get_ticks() - self.start_time - self.total_pause_time) / 1000
             remaining_time = max(0, self.timer - elapsed_time)
-            timer_text = self.font.render(f'{int(remaining_time)}', True, "White")
-            timer_rect = timer_text.get_rect(center=(SCREEN.get_width() // 2, 50))
+            timer_text = self.font.render(f'{int(remaining_time)}', True, "#361612")
+            timer_rect = timer_text.get_rect(center=(SCREEN.get_width() // 1.92, 50))
             SCREEN.blit(timer_text, timer_rect)
 
             if remaining_time <= 0:

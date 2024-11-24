@@ -6,9 +6,13 @@ Embark on the adventure of Sally, a young farmer who must set off on a journey t
 
 In this journey, your objective is to stop the evil enterprise from continuing their harmful production practices, as they damage the environment, animals, and plants around us!!
 
+## Features
+A vast and diverse world awaits you! Journey through three thematics of levels, including a lush green forest, a stunning crystal cave, and the company's secret, sinister factory. Across six full levels, the challenge intensifies as you progress!
+
+![image](https://github.com/user-attachments/assets/58810a10-91ce-4b4f-bed8-c9740a2eebf9)
 
 ## Running
-
+Go ahead, you can do this to start this adventure: 
 * $ pip install -r requirements.txt
 * $ python main.py
 

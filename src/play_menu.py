@@ -106,15 +106,15 @@ def play():
         # Textos de etiquetas para las columnas
 
         BEGINNER_TEXT = get_font(70).render(get_text("beginner"), True, "#38bc0f")
-        BEGINNER_RECT = BEGINNER_TEXT.get_rect(center=(screen_width // 6, screen_height // 3.5))
+        BEGINNER_RECT = BEGINNER_TEXT.get_rect(center=(screen_width // 6, screen_height // 2.8))
         SCREEN.blit(BEGINNER_TEXT, BEGINNER_RECT)
 
         INTERMEDIATE_TEXT = get_font(70).render(get_text("medium"), True, "#ffef00")
-        INTERMEDIATE_RECT = INTERMEDIATE_TEXT.get_rect(center=(screen_width // 1.9, screen_height // 3.5))
+        INTERMEDIATE_RECT = INTERMEDIATE_TEXT.get_rect(center=(screen_width // 1.9, screen_height // 2.8))
         SCREEN.blit(INTERMEDIATE_TEXT, INTERMEDIATE_RECT)
 
         ADVANCED_TEXT = get_font(70).render(get_text("advanced"), True, "#ff0031")
-        ADVANCED_RECT = ADVANCED_TEXT.get_rect(center=(3 * screen_width // 3.5, screen_height // 3.5))
+        ADVANCED_RECT = ADVANCED_TEXT.get_rect(center=(3 * screen_width // 3.5, screen_height // 2.8))
         SCREEN.blit(ADVANCED_TEXT, ADVANCED_RECT)
 
         # Crea botones para los niveles y el botón de retroceso en forma de zigzag

@@ -135,3 +135,9 @@ class Player(pygame.sprite.Sprite):
         self.move(dt)
         self.animate(dt)  # Llamada para animar el personaje
         self.check_contact()
+        
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LSHIFT] or keys[pygame.K_RSHIFT]:
+            self.speed = 300  # Aumenta la velocidad en 200
+        else:
+            self.speed = 200  # Velocidad normal

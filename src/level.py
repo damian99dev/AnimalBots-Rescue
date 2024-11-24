@@ -15,6 +15,7 @@ class Level:
         self.background_objects = pygame.sprite.Group()  # Grupo para objetos de fondo (sin colisiones)
         self.background = None
         self.fin_objects = []
+        self.error_objects = []  # Añadido para manejar los objetos de error
         self.setup(tmx_map)
 
     def setup(self, tmx_map):
@@ -41,6 +42,11 @@ class Level:
                 fin_image = pygame.image.load('graphics/Background/ded.png').convert_alpha()
                 fin_image = pygame.transform.scale(fin_image, (obj.width, obj.height))
                 self.fin_objects.append((fin_rect, fin_image, (obj.x, obj.y)))
+            elif obj.name == 'error':  # Detectar el error
+                error_rect = pygame.Rect(obj.x, obj.y, obj.width, obj.height)
+                error_image = pygame.image.load('graphics/Background/error.png').convert_alpha()
+                error_image = pygame.transform.scale(error_image, (obj.width, obj.height))
+                self.error_objects.append((error_rect, error_image, (obj.x, obj.y)))
         # Cargar los objetos de la capa 'Backgtras' (por ejemplo, árboles)
         self.load_background_objects(tmx_map)
         # Cargar los enemigos
@@ -51,7 +57,7 @@ class Level:
         backgtras_layer = tmx_map.get_layer_by_name('Backgtras')
         if backgtras_layer:
             for obj in backgtras_layer:
-                if obj.name in ['boton', 'peligro', 'mancha', 'estalactitas2', 'yo', 'gemaB', 'gemaM','dino', 'rac', 'compu', 'cajas3', 'caja', 'compu2', 'cosa', 'estalactitas', 'victoria', 'linternal', 'fence', 'barril', 'arbol', 'mig', 'jos', 'dam', 'gre', 'rox', 'nao', 'flechaa', 'flechab','pinchos', 'negro',  'derecha', 'arbu', 'arbust', 'rocab', 'rocag', 'pa', 'st', 'laser', 'laser2','xor',  'laser3', 'fondo', 'picos1', 'naonao', 'picos2', 'picos3']:
+                if obj.name in ['izquierda', 'boton', 'peligro', 'mancha', 'estalactitas2', 'yo', 'gemaB', 'gemaM','dino', 'rac', 'compu', 'cajas3', 'caja', 'compu2', 'cosa', 'estalactitas', 'victoria', 'linternal', 'fence', 'barril', 'arbol', 'mig', 'jos', 'dam', 'gre', 'rox', 'nao', 'flechaa', 'flechab','pinchos', 'negro',  'derecha', 'arbu', 'arbust', 'rocab', 'rocag', 'pa', 'st', 'laser', 'laser2','xor',  'laser3', 'fondo', 'picos1', 'naonao', 'picos2', 'picos3']:
                     image_path = f'graphics/Background/{obj.name}.png'  # Asegúrate de tener las imágenes en la carpeta 'graphics/Background'
                     object_image = pygame.image.load(image_path).convert_alpha()
                     object_image = pygame.transform.scale(object_image, (obj.width, obj.height))
@@ -112,17 +118,28 @@ class Level:
         self.display_surface.blit(self.meta_image, self.meta_pos)
         for fin_rect, fin_image, fin_pos in self.fin_objects:
             self.display_surface.blit(fin_image, fin_pos)
+        for error_rect, error_image, error_pos in self.error_objects:
+            self.display_surface.blit(error_image, error_pos)
         # Verificar si el jugador ha alcanzado la meta
         if self.player.hitbox_rect.colliderect(self.meta_rect):
             from victory import VictoryScreen
             victory_screen = VictoryScreen()
             victory_screen.run()  # Mostrar la pantalla de victoria
+
         # Verificar si el jugador ha alcanzado alguno de los objetos 'fin'
         for fin_rect, _, _ in self.fin_objects:
             if self.player.hitbox_rect.colliderect(fin_rect):
                 from game_over import GameOverScreen, get_font
                 game_over_screen = GameOverScreen(self.display_surface, get_font(60))
                 game_over_screen.run()  # Mostrar la pantalla de derrota
+                break  # Salir del bucle una vez que se detecta una colisión
+
+        # Verificar si el jugador ha alcanzado alguno de los objetos 'error'
+        for error_rect, _, _ in self.error_objects:
+            if self.player.hitbox_rect.colliderect(error_rect):
+                from Bug import BugScreen, get_font
+                bug_screen = BugScreen(self.display_surface, get_font(60))
+                bug_screen.run()  # Mostrar la pantalla de error
                 break  # Salir del bucle una vez que se detecta una colisión
 
         # Verificar si el jugador ha colisionado con algún enemigo

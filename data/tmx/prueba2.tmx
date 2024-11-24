@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="157" height="65" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="2065">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="157" height="65" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="2077">
  <tileset firstgid="1" name="mona china 1" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../../graphics/Protagonist/mona china 1.png" trans="ff00ff" width="32" height="32"/>
  </tileset>
@@ -128,6 +128,12 @@
  </tileset>
  <tileset firstgid="5785" name="peligro" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../../graphics/Background/peligro.png" trans="ff00ff" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="5786" name="error" tilewidth="6" tileheight="8" tilecount="1" columns="1">
+  <image source="../../graphics/Background/error.png" trans="ff00ff" width="6" height="8"/>
+ </tileset>
+ <tileset firstgid="5787" name="izquierda" tilewidth="16" tileheight="21" tilecount="1" columns="1">
+  <image source="../../graphics/Background/izquierda.png" trans="ff00ff" width="16" height="21"/>
  </tileset>
  <layer id="3" name="backg" width="157" height="65">
   <data encoding="csv">
@@ -588,6 +594,15 @@
   <object id="2061" name="mancha" gid="5783" x="990.833" y="836.333" width="73" height="50"/>
   <object id="2062" name="mancha" gid="5783" x="1326.83" y="836" width="73" height="50"/>
   <object id="2064" name="peligro" gid="5785" x="526.667" y="1681.33" width="32" height="32"/>
+  <object id="2067" name="derecha" gid="4908" x="416" y="1154" width="25.3968" height="33.3333"/>
+  <object id="2068" name="derecha" gid="4908" x="704" y="1762" width="25.3968" height="33.3333"/>
+  <object id="2069" name="derecha" gid="4908" x="1312" y="1538" width="25.3968" height="33.3333"/>
+  <object id="2070" name="derecha" gid="4908" x="2208" y="1570" width="25.3968" height="33.3333"/>
+  <object id="2071" name="derecha" gid="4908" x="640" y="770" width="25.3968" height="33.3333"/>
+  <object id="2072" name="derecha" gid="4908" x="1632" y="802" width="25.3968" height="33.3333"/>
+  <object id="2073" name="derecha" gid="4908" x="3488" y="674" width="25.3968" height="33.3333"/>
+  <object id="2075" name="flechab" gid="4907" x="2080" y="1314" width="25.0714" height="40.5"/>
+  <object id="2076" name="izquierda" gid="5787" x="2848" y="1090" width="28.8095" height="37.8125"/>
  </objectgroup>
  <objectgroup id="4" name="enemies">
   <object id="678" name="enemy1" gid="4921" x="192" y="576" width="64" height="64"/>
@@ -601,5 +616,6 @@
   <object id="707" name="fin" gid="4917" x="479.5" y="1888" width="127.5" height="6"/>
   <object id="708" name="fin" gid="4917" x="1344.5" y="1858.25" width="735.5" height="10.4941"/>
   <object id="843" name="fin" gid="4917" x="2826.25" y="1866.75" width="185.5" height="10.4941"/>
+  <object id="2066" name="error" gid="5786" x="211.167" y="1948" width="240.667" height="769"/>
  </objectgroup>
 </map>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="157" height="65" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="687">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="157" height="65" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="689">
  <tileset firstgid="1" name="mona china 1" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../../graphics/Protagonist/mona china 1.png" trans="ff00ff" width="32" height="32"/>
  </tileset>
@@ -116,6 +116,9 @@
  </tileset>
  <tileset firstgid="5861" name="mancha" tilewidth="50" tileheight="50" tilecount="1" columns="1">
   <image source="../../graphics/Background/mancha.png" trans="ff00ff" width="50" height="50"/>
+ </tileset>
+ <tileset firstgid="5862" name="peligro" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../../graphics/Background/peligro.png" trans="ff00ff" width="32" height="32"/>
  </tileset>
  <layer id="3" name="backg" width="157" height="65">
   <data encoding="csv">
@@ -572,12 +575,12 @@
   <object id="684" name="mancha" gid="5861" x="3236" y="1956" width="73" height="50"/>
   <object id="685" name="mancha" gid="5861" x="3961.5" y="1347.95" width="73" height="50"/>
   <object id="686" name="mancha" gid="5861" x="3671.17" y="1347.67" width="73" height="50"/>
+  <object id="688" name="peligro" gid="5862" x="3631.83" y="1697.83" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="4" name="enemies">
   <object id="251" name="enemy1" gid="4921" x="256" y="1280" width="64" height="64"/>
   <object id="254" name="enemy1" gid="4921" x="448" y="1280" width="64" height="64"/>
   <object id="255" name="enemy1" gid="4921" x="672" y="1344" width="64" height="64"/>
-  <object id="363" name="enemy1" gid="4921" x="1184" y="1824" width="64" height="64"/>
   <object id="364" name="enemy1" gid="4921" x="1696" y="1824" width="64" height="64"/>
   <object id="365" name="enemy1" gid="4921" x="1440" y="1824" width="64" height="64"/>
   <object id="371" name="enemy1" gid="4921" x="2176" y="1664" width="64" height="64"/>

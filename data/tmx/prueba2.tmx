@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="157" height="65" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="2063">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="157" height="65" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="2065">
  <tileset firstgid="1" name="mona china 1" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../../graphics/Protagonist/mona china 1.png" trans="ff00ff" width="32" height="32"/>
  </tileset>
@@ -125,6 +125,9 @@
  </tileset>
  <tileset firstgid="5784" name="mancha" tilewidth="50" tileheight="50" tilecount="1" columns="1">
   <image source="../../graphics/Background/mancha.png" trans="ff00ff" width="50" height="50"/>
+ </tileset>
+ <tileset firstgid="5785" name="peligro" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../../graphics/Background/peligro.png" trans="ff00ff" width="32" height="32"/>
  </tileset>
  <layer id="3" name="backg" width="157" height="65">
   <data encoding="csv">
@@ -584,6 +587,7 @@
   <object id="2060" name="mancha" gid="5783" x="711" y="837.5" width="73" height="50"/>
   <object id="2061" name="mancha" gid="5783" x="990.833" y="836.333" width="73" height="50"/>
   <object id="2062" name="mancha" gid="5783" x="1326.83" y="836" width="73" height="50"/>
+  <object id="2064" name="peligro" gid="5785" x="526.667" y="1681.33" width="32" height="32"/>
  </objectgroup>
  <objectgroup id="4" name="enemies">
   <object id="678" name="enemy1" gid="4921" x="192" y="576" width="64" height="64"/>

@@ -29,10 +29,10 @@ PAUSE_BUTTON_IMAGE = pygame.transform.scale(PAUSE_BUTTON_IMAGE, (int(PAUSE_BUTTO
                                                                  int(PAUSE_BUTTON_IMAGE.get_height() * 1.9)))
 PAUSE_BUTTON_RECT = PAUSE_BUTTON_IMAGE.get_rect(topleft=(1440, 10))       # Coloca en la esquina superior izquierda
 
-HEALTH_BAR_IMAGE = pygame.image.load("graphics/ui/game_elements/corazones daño3.png")
-HEALTH_BAR_IMAGE = pygame.transform.scale(HEALTH_BAR_IMAGE, (int(HEALTH_BAR_IMAGE.get_width() * 0.3),  # Ajusta el tamaño de la barra de salud
-                                                               int(HEALTH_BAR_IMAGE.get_height() * 0.3)))
-HEALTH_BAR_POS = HEALTH_BAR_IMAGE.get_rect(topleft=(-50, -50))      # Coloca en la esquina superior izquierda
+HEALTH_BAR_IMAGE = pygame.image.load("graphics/ui/game_elements/corazonV1.png")
+HEALTH_BAR_IMAGE = pygame.transform.scale(HEALTH_BAR_IMAGE, (int(HEALTH_BAR_IMAGE.get_width() * 0.15),  # Ajusta el tamaño de la barra de salud
+                                                               int(HEALTH_BAR_IMAGE.get_height() * 0.15)))
+HEALTH_BAR_POS = HEALTH_BAR_IMAGE.get_rect(topleft=(50, 15))      # Coloca en la esquina superior izquierda
 
 def get_font(size):                                                 # Función para obtener la fuente con un tamaño específico
     return pygame.font.Font("assets/fonts/font1.otf", size)

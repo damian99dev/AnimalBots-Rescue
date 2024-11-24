@@ -19,7 +19,7 @@ def play_intro_video(video_path):
 
     # Iniciar el audio con Pygame
     pygame.mixer.init()
-    pygame.mixer.music.load("temp_audio.mp3")
+    pygame.mixer.music.load("assets/sounds/music/temp_audio.mp3")
     pygame.mixer.music.play()
 
     # Reproducción de video usando OpenCV
@@ -37,7 +37,7 @@ def play_intro_video(video_path):
 
         frame = cv2.flip(frame, 1)
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        frame = cv2.resize(frame, (1550, 870))
+        frame = cv2.resize(frame, (1550, 780))
         frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
         frame_surface = pygame.surfarray.make_surface(frame)
 

@@ -15,7 +15,12 @@
         "game_over": "GAME OVER",
         "level_text": "SELECT LEVEL",
         "victory": "YOU WON! :D",
-        "next": "Next"
+        "next": "Next",
+        "title": "How to play",
+        "instruction_1": "1. Press 'D' or right to          \n move to the right.",
+        "instruction_2": "2. Press 'A' or left to             \n move to the left.",
+        "instruction_3": "3. Press 'W', 'SPACE',      \n or up to jump.",
+        "instruction_4": "4. Press 'P' or 'ESC' to     \n pause the game."
 
     },
     "es": {
@@ -35,7 +40,12 @@
         "level_text": "SELECCIONA NIVEL",
         "victory": "¡GANASTE!",
         "next": "Siguiente",
-        "retry": "Reintentar"
+        "retry": "Reintentar",
+        "title": "Como Jugar",
+        "instruction_1": "1. Presiona 'D' o derecha para\n moverte a la derecha.",
+        "instruction_2": "2. Presiona 'A' o izquierda para\n moverte a la izquierda.",
+        "instruction_3": "3. Presiona 'W', 'ESPACIO'\n o arriba para saltar.",
+        "instruction_4": "4. Presiona 'P' o 'ESC' para\n pausar el juego."
 
     }
 }

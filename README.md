@@ -11,20 +11,20 @@ This game combines exciting platforming mechanics with a meaningful message abou
 In this journey, your objective is to stop the evil enterprise from continuing their harmful production practices, as they damage the environment, animals, and plants around us!!
 
 ## 🌟 Features
-🌎 **A Vast and Diverse World
+🌎 *A Vast and Diverse World*
 Explore a beautifully crafted world with three distinct environments:
 
 - Lush Green Forest: Navigate through dense trees and wildlife as you begin your quest.
 - Stunning Crystal Cave: Marvel at its glowing beauty while overcoming treacherous terrain.
 - Sinister Factory: Uncover the dark secrets behind Paco's factory as you face your toughest challenges yet!
 
-🎮 **Challenging Gameplay
+🎮 *Challenging Gameplay*
 
 Traverse 6 levels with increasing difficulty that test your skills and determination.
 Engage in fun platforming mechanics with puzzles, enemies, and hidden secrets.
 Face unique obstacles in every environment designed to keep you on your toes!
 
-🌱 **A Meaningful Story
+🌱 *A Meaningful Story*
 
 - Fight for animals, nature, and the environment.
 - Stop unethical production practices that harm the ecosystem.

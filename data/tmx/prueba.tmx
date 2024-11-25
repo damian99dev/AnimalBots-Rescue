@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="120" height="57" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="268">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="120" height="57" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="274">
  <tileset firstgid="1" name="mona china 1" tilewidth="32" tileheight="32" tilecount="1" columns="1">
   <image source="../../graphics/Protagonist/mona china 1.png" trans="ff00ff" width="32" height="32"/>
  </tileset>
@@ -74,6 +74,12 @@
  </tileset>
  <tileset firstgid="4919" name="mancha" tilewidth="50" tileheight="50" tilecount="1" columns="1">
   <image source="../../graphics/Background/mancha.png" trans="ff00ff" width="50" height="50"/>
+ </tileset>
+ <tileset firstgid="4920" name="peligro" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../../graphics/Background/peligro.png" trans="ff00ff" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="4921" name="error" tilewidth="6" tileheight="8" tilecount="1" columns="1">
+  <image source="../../graphics/Background/error.png" trans="ff00ff" width="6" height="8"/>
  </tileset>
  <layer id="3" name="backg" width="120" height="57">
   <data encoding="csv">
@@ -220,7 +226,7 @@
   <object id="156" name="flechab" gid="4908" x="3360" y="1504" width="13" height="21"/>
   <object id="157" name="flechab" gid="4908" x="3232" y="1312" width="13" height="21"/>
   <object id="158" name="flechab" gid="4908" x="3232" y="1184" width="13" height="21"/>
-  <object id="159" name="derecha" gid="4909" x="992" y="1312" width="16" height="21"/>
+  <object id="159" name="derecha" gid="4909" x="992" y="1312" width="25.3968" height="33.3333"/>
   <object id="160" name="arbu" gid="4910" x="768" y="1408" width="29" height="15"/>
   <object id="161" name="arbu" gid="4910" x="704" y="1408" width="29" height="15"/>
   <object id="162" name="arbu" gid="4910" x="928" y="1312" width="29" height="15"/>
@@ -241,8 +247,6 @@
   <object id="181" name="arbust" gid="4911" x="2368" y="1184" width="63" height="27"/>
   <object id="182" name="arbust" gid="4911" x="3264" y="1504" width="63" height="27"/>
   <object id="183" name="arbust" gid="4911" x="3392" y="1504" width="63" height="27"/>
-  <object id="184" name="derecha" gid="4909" x="2752" y="928" width="16" height="21"/>
-  <object id="185" name="derecha" gid="4909" x="3104" y="864" width="16" height="21"/>
   <object id="186" name="flechaa" gid="4907" x="2592" y="1088" width="13" height="21"/>
   <object id="187" name="rocab" gid="4912" x="1120" y="1376" width="31" height="31"/>
   <object id="188" name="rocab" gid="4912" x="1024" y="1376" width="31" height="31"/>
@@ -288,6 +292,10 @@
   <object id="265" name="mancha" gid="4919" x="2428.5" y="1220.67" width="73" height="50"/>
   <object id="266" name="mancha" gid="4919" x="3246.5" y="1541" width="73" height="50"/>
   <object id="267" name="mancha" gid="4919" x="3409.75" y="1540.75" width="73" height="50"/>
+  <object id="268" name="peligro" gid="4920" x="1777.5" y="1506.17" width="32" height="32"/>
+  <object id="271" name="derecha" gid="4909" x="2752" y="930" width="25.3968" height="33.3333"/>
+  <object id="272" name="derecha" gid="4909" x="3072" y="866" width="25.3968" height="33.3333"/>
+  <object id="273" name="derecha" gid="4909" x="2048" y="1282" width="25.3968" height="33.3333"/>
  </objectgroup>
  <objectgroup id="4" name="enemies">
   <object id="229" name="enemy1" gid="4916" x="416" y="1472" width="64" height="64"/>
@@ -300,5 +308,6 @@
   <object id="146" name="meta" gid="4899" x="3399.5" y="864.663" width="17.5" height="66.3265"/>
   <object id="231" name="fin" gid="4917" x="1769.33" y="1696" width="40.3333" height="6"/>
   <object id="233" name="fin" gid="4917" x="2421.83" y="1365.5" width="5" height="6"/>
+  <object id="270" name="error" gid="4921" x="811.167" y="1409" width="141.667" height="16"/>
  </objectgroup>
 </map>

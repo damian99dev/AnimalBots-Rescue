@@ -155,7 +155,7 @@ class Enemy4(pygame.sprite.Sprite):
         self.animation_speed = 0.1
 
         # Ajustar el tamaño de la hitbox
-        self.hitbox_rect.size = (128, 120)
+        self.hitbox_rect.size = (128, 118)
         # Ajustar el tamaño de la hitbox de colisión con el jugador
         self.player_hitbox_rect.size = (100, 100)
 

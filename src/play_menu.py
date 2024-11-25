@@ -132,8 +132,8 @@ def play():
         LEVEL_6_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla4_bt.png"), pos=(3 * screen_width // 3.5, screen_height // 1.68+ 100), 
                                 text_input=get_text("3-2"), font=get_font(55), base_color="#361612", hovering_color="#ff0031")
 
-        BACK_BUTTON = Button(image=None, pos=(screen_width // 7, screen_height // 7 + 650), 
-                             text_input=get_text("back2"), font=get_font(55), base_color="White", hovering_color="#ffef00")
+        BACK_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla_back_bt.png"), pos=(screen_width // 7, screen_height // 7 + 650), 
+                                text_input=get_text("back2"), font=get_font(50), base_color="#361612", hovering_color="#ffef00")
 
 
         for button in [LEVEL_1_BUTTON, LEVEL_2_BUTTON, LEVEL_3_BUTTON, LEVEL_4_BUTTON, LEVEL_5_BUTTON, LEVEL_6_BUTTON, BACK_BUTTON]:

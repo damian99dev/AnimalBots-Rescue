@@ -5,7 +5,10 @@ from options_menu import get_text
 import json
 from game_class import Game
 import current_level_config
-
+import cv2
+video_path = "assets/images/backgrounds/play_menu.mp4"   # Carga el video con OpenCV
+cap = cv2.VideoCapture(video_path)
+from moviepy import VideoFileClip
 
 def load_config():    # Cargar la configuración
     try:
@@ -59,6 +62,55 @@ class NivelManager:
             cls.nivel_actual = cls.niveles[nivel_index + 1]
         else:
             cls.nivel_actual = None  # No hay más niveles
+
+
+
+def play_video(video_path):
+    video_clip = VideoFileClip(video_path)
+    audio = video_clip.audio
+    audio.write_audiofile("temp_audio.mp3")
+    fps = video_clip.fps
+
+    pygame.mixer.init()
+    pygame.mixer.music.load("temp_audio.mp3")
+    pygame.mixer.music.play()
+
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        print("Error: No se pudo cargar el video.")
+        return
+
+    clock = pygame.time.Clock()
+
+    while True:
+        ret, frame = cap.read()
+        if not ret:  # Si el video ha terminado, salir del bucle
+            break
+
+        frame = cv2.flip(frame, 1)
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frame = cv2.resize(frame, (1540, 870))
+        frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+        frame_surface = pygame.surfarray.make_surface(frame)
+
+        # Dibuja el frame en la pantalla
+        SCREEN.blit(frame_surface, (0, 0))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                cap.release()
+                pygame.mixer.music.stop()
+                pygame.quit()
+                sys.exit()
+
+        pygame.display.update()
+        clock.tick(fps)
+
+    cap.release()
+    pygame.mixer.music.stop()
+
+
+
 
 class VictoryScreen:
     def __init__(self):
@@ -154,6 +206,8 @@ class VictoryScreen:
                         else:
                             # No hay más niveles, regresa al menú
                             if not music_playing:
+                                
+                                play_video("assets/images/backgrounds/end.mp4")
                                 pygame.mixer.music.load("assets/sounds/music/Main Menu.mp3")
                                 pygame.mixer.music.play(-1, fade_ms=3000)
                                 music_playing = True

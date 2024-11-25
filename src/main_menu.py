@@ -2,14 +2,19 @@ import pygame, sys                  # Importa Pygame para el motor del juego y s
 from button import Button           # Importa la clase Button para todos los botones del menú
 from options_menu import get_text
 from play_menu import play
-
 import json                         # 
 import cv2                          # Importar OpenCV
+from moviepy import VideoFileClip
 
 pygame.init() 
 
 video_path = "assets/images/backgrounds/menu.mp4"   # Carga el video con OpenCV
 cap = cv2.VideoCapture(video_path)
+
+
+
+
+
 
 music_playing = False                                                   # Variable global para controlar si la música del menú ya está sonando
 
@@ -41,6 +46,56 @@ def set_volume(sound, volume):
 config = load_config()  # Cargar el volumen guardado
 set_volume(MAIN_MUSIC, config["music_volume"])  # Establecer volumen de música de Game Over
 
+credits_video = "assets/images/backgrounds/menu.mp4"   # Carga el video con OpenCV
+capture = cv2.VideoCapture(credits_video)
+
+
+def play_video(video_path):
+    video_clip = VideoFileClip(video_path)
+    audio = video_clip.audio
+    audio.write_audiofile("temp_audio.mp3")
+    fps = video_clip.fps
+
+    pygame.mixer.init()
+    pygame.mixer.music.load("temp_audio.mp3")
+    pygame.mixer.music.play()
+
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        print("Error: No se pudo cargar el video.")
+        return
+
+    clock = pygame.time.Clock()
+
+    while True:
+        ret, frame = cap.read()
+        if not ret:  # Si el video ha terminado, salir del bucle
+            break
+
+        frame = cv2.flip(frame, 1)
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frame = cv2.resize(frame, (1540, 870))
+        frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+        frame_surface = pygame.surfarray.make_surface(frame)
+
+        # Dibuja el frame en la pantalla
+        SCREEN.blit(frame_surface, (0, 0))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                cap.release()
+                pygame.mixer.music.stop()
+                pygame.quit()
+                sys.exit()
+
+        pygame.display.update()
+        clock.tick(fps)
+
+    cap.release()
+    pygame.mixer.music.stop()
+
+
+
 def main_menu():
     global music_playing
     
@@ -61,8 +116,12 @@ def main_menu():
 
     # Crea una fuente
     beta_font = get_font(30) 
-    beta_text = beta_font.render("VERSION 3.1.0", True, (255, 255, 255)) 
+    beta_text = beta_font.render(get_text("version"), True, (255, 239, 0)) 
     beta_text_rect = beta_text.get_rect(topleft=(10, screen_height - 40))
+
+    credits_font = get_font(38) 
+    credits_text = credits_font.render(get_text("credits"), True, (176, 0, 53)) 
+    credits_rect = credits_text.get_rect(topleft=(1310, screen_height - 180))
 
     # Menú principal
     
@@ -97,17 +156,20 @@ def main_menu():
                             text_input=get_text("options"), font=get_font(57), base_color="#361612", hovering_color="#ffef00")
         QUIT_BUTTON = Button(image=pygame.image.load("assets/images/ui/tabla_exit_bt.png"), pos=(screen_width // 2 + 20, screen_height // 2 + 350), 
                          text_input=get_text("exit"), font=get_font(57), base_color="#361612", hovering_color="#ff0031")
+        CREDITS_BUTTON = Button(image=amf_corp_image, pos=(screen_width // 1.06, screen_height // 2 + 365), 
+                         text_input=get_text(""), font=get_font(57), base_color="#361612", hovering_color="#ff0031")
 
         # Dibujar la imagen "AMF CORP" en la esquina inferior derecha
-        SCREEN.blit(amf_corp_image, (screen_width - amf_corp_width, screen_height - 150))  # Ajustar para esquina inferior derecha
+        #SCREEN.blit(amf_corp_image, (screen_width - amf_corp_width, screen_height - 150))  # Ajustar para esquina inferior derecha
 
         # Dibujar el texto "Beta 1.1.6" en la esquina inferior izquierda
         SCREEN.blit(beta_text, beta_text_rect)
+        SCREEN.blit(credits_text, credits_rect)
 
         MENU_TITLE_BT.update(SCREEN)
 
         # Cambiar color de los botones al pasar el mouse
-        for button in [PLAY_BUTTON, OPTIONS_BUTTON, QUIT_BUTTON]:
+        for button in [PLAY_BUTTON, OPTIONS_BUTTON, QUIT_BUTTON,CREDITS_BUTTON]:
             button.changeColor(MENU_MOUSE_POS)
             button.update(SCREEN)
 
@@ -122,6 +184,15 @@ def main_menu():
                 if OPTIONS_BUTTON.checkForInput(MENU_MOUSE_POS):
                     from options_menu import options
                     options()  # Inicia la pantalla de opciones
+                    
+                if CREDITS_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    pygame.mixer.music.stop()
+                    play_video("assets/images/backgrounds/credits.mp4")
+                    pygame.mixer.music.load("assets/sounds/music/Main Menu.mp3")
+                    pygame.mixer.music.play(-1)
+                    from main_menu import main_menu
+                    main_menu()
+                    
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()

@@ -29,11 +29,11 @@ PAUSE_BUTTON_IMAGE = pygame.transform.scale(PAUSE_BUTTON_IMAGE, (int(PAUSE_BUTTO
                                                                  int(PAUSE_BUTTON_IMAGE.get_height() * 1.9)))
 PAUSE_BUTTON_RECT = PAUSE_BUTTON_IMAGE.get_rect(topleft=(1440, 10))       # Coloca en la esquina superior izquierda
 
-HEALTH_BAR_IMAGE = pygame.image.load("graphics/ui/game_elements/corazones daño3.png")
-HEALTH_BAR_IMAGE = pygame.transform.scale(HEALTH_BAR_IMAGE, (int(HEALTH_BAR_IMAGE.get_width() * 0.3),  # Ajusta el tamaño de la barra de salud
-                                                               int(HEALTH_BAR_IMAGE.get_height() * 0.3)))
-HEALTH_BAR_POS = HEALTH_BAR_IMAGE.get_rect(topleft=(-50, -50))      # Coloca en la esquina superior izquierda
-
+HEALTH_BAR_IMAGE = pygame.image.load("assets/images/ui/unico_corazón.png")
+HEALTH_BAR_IMAGE = pygame.transform.scale(HEALTH_BAR_IMAGE, (int(HEALTH_BAR_IMAGE.get_width() * 0.15),  # Ajusta el tamaño de la barra de salud
+                                                               int(HEALTH_BAR_IMAGE.get_height() * 0.15)))
+HEALTH_BAR_POS = HEALTH_BAR_IMAGE.get_rect(topleft=(50, 15))   
+   # Coloca en la esquina superior izquierda
 def get_font(size):                                                 # Función para obtener la fuente con un tamaño específico
     return pygame.font.Font("assets/fonts/font1.otf", size)
 
@@ -214,8 +214,8 @@ class Game:
         self.paused = True  # Asegura que el juego esté pausado al mostrar el tutorial
         tutorial_image = pygame.image.load("assets/images/ui/tutorial_bgg.png")  # Carga la imagen del tutorial
         tutorial_image = pygame.transform.scale(tutorial_image, (1550, 870))  # Escalar al tamaño de la pantalla
-        back_and_play = Button(image=None, pos=(screen_width // 7, screen_height // 7 + 650), 
-                                            text_input=get_text("back"), font=get_font(55), base_color="White", hovering_color="#ffef00")
+        back_and_play = Button(image=pygame.image.load("assets/images/ui/tabla_back_bt.png"), pos=(screen_width // 7, screen_height // 7 + 650), 
+                                            text_input=get_text("back"), font=get_font(55), base_color="#361612", hovering_color="#ffef00")
 
         # Crear botones independientes
         title_button = Button(
@@ -263,6 +263,15 @@ class Game:
             hovering_color="#ffbd74"
         )
 
+        instruction_5_button = Button(
+            image=None,
+            pos=(screen_width - 400, screen_height // 7 + 520),  # Ajustado al papel
+            text_input=get_text("instruction_5"), 
+            font=get_font(35),  # Tamaño reducido
+            base_color="#ff7474",
+            hovering_color="#ff7474"
+        )
+
         # Detener el temporizador mientras se ve el tutorial
         tutorial_start_time = pygame.time.get_ticks()
 
@@ -285,6 +294,9 @@ class Game:
 
             instruction_4_button.changeColor(mouse_pos)
             instruction_4_button.update(SCREEN)
+
+            instruction_5_button.changeColor(mouse_pos)
+            instruction_5_button.update(SCREEN)
 
             back_and_play.changeColor(mouse_pos)
             back_and_play.update(SCREEN)

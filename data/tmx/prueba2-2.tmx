@@ -495,24 +495,6 @@
   <object id="602" name="gemaB" gid="5776" x="4544" y="1568" width="10" height="10" rotation="10"/>
   <object id="603" name="gemaB" gid="5776" x="4576" y="1728" width="10" height="10" rotation="10"/>
   <object id="604" name="gemaB" gid="5776" x="4544" y="1856" width="10" height="10" rotation="10"/>
-  <object id="605" name="yo" gid="5777" x="928" y="96" width="38.6016" height="73.6667"/>
-  <object id="606" name="yo" gid="5777" x="992" y="96" width="38.6016" height="73.6667"/>
-  <object id="607" name="yo" gid="5777" x="1056" y="96" width="38.6016" height="73.6667"/>
-  <object id="608" name="yo" gid="5777" x="1472" y="96" width="38.6016" height="73.6667"/>
-  <object id="609" name="yo" gid="5777" x="1536" y="96" width="38.6016" height="73.6667"/>
-  <object id="610" name="yo" gid="5777" x="1600" y="96" width="38.6016" height="73.6667"/>
-  <object id="611" name="yo" gid="5777" x="2176" y="96" width="38.6016" height="73.6667"/>
-  <object id="612" name="yo" gid="5777" x="2240" y="96" width="38.6016" height="73.6667"/>
-  <object id="613" name="yo" gid="5777" x="2304" y="96" width="38.6016" height="73.6667"/>
-  <object id="614" name="yo" gid="5777" x="2720" y="96" width="38.6016" height="73.6667"/>
-  <object id="615" name="yo" gid="5777" x="2784" y="96" width="38.6016" height="73.6667"/>
-  <object id="616" name="yo" gid="5777" x="2848" y="96" width="38.6016" height="73.6667"/>
-  <object id="617" name="yo" gid="5777" x="3360" y="96" width="38.6016" height="73.6667"/>
-  <object id="618" name="yo" gid="5777" x="3424" y="96" width="38.6016" height="73.6667"/>
-  <object id="619" name="yo" gid="5777" x="3488" y="96" width="38.6016" height="73.6667"/>
-  <object id="620" name="yo" gid="5777" x="3968" y="96" width="38.6016" height="73.6667"/>
-  <object id="621" name="yo" gid="5777" x="4032" y="96" width="38.6016" height="73.6667"/>
-  <object id="622" name="yo" gid="5777" x="4096" y="96" width="38.6016" height="73.6667"/>
   <object id="623" name="fence" gid="5779" x="224" y="1696" width="75" height="28"/>
   <object id="624" name="fence" gid="5779" x="288" y="1696" width="75" height="28"/>
   <object id="625" name="fence" gid="5779" x="1184" y="1920" width="75" height="28"/>
@@ -601,12 +583,12 @@
   <object id="372" name="enemy1" gid="4921" x="2880" y="1600" width="64" height="64"/>
   <object id="373" name="enemy1" gid="4921" x="3040" y="1600" width="64" height="64"/>
   <object id="374" name="enemy1" gid="4921" x="3232" y="1600" width="64" height="64"/>
-  <object id="440" name="enemy1" gid="4921" x="4192" y="1248" width="64" height="64"/>
-  <object id="441" name="enemy1" gid="4921" x="3808" y="1248" width="64" height="64"/>
-  <object id="442" name="enemy1" gid="4921" x="4000" y="1248" width="64" height="64"/>
+  <object id="440" name="enemy1" gid="4921" x="4000" y="1248" width="64" height="64"/>
+  <object id="441" name="enemy1" gid="4921" x="3616" y="1248" width="64" height="64"/>
+  <object id="442" name="enemy1" gid="4921" x="3808" y="1248" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="2" name="Objetos">
-  <object id="2" name="player" gid="1" x="288" y="1696" width="32" height="32"/>
+  <object id="2" name="player" gid="1" x="288" y="1664" width="32" height="32"/>
   <object id="146" name="meta" gid="4898" x="4655.88" y="1952.94" width="32" height="32"/>
   <object id="247" name="fin" gid="4917" x="2422" y="1806" width="10.6667" height="158"/>
   <object id="388" name="fin" gid="4917" x="3749.86" y="1919.36" width="18.0909" height="6"/>

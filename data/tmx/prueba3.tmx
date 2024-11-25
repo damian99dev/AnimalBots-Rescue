@@ -599,7 +599,7 @@
   <object id="409" name="enemy3" gid="8716" x="2048" y="4032" width="200" height="200"/>
  </objectgroup>
  <objectgroup id="2" name="Objetos">
-  <object id="2" name="player" gid="1" x="2848" y="352" width="32" height="32"/>
+  <object id="2" name="player" gid="1" x="2784" y="288" width="32" height="32"/>
   <object id="229" name="meta" gid="4899" x="1856" y="3584" width="32" height="32"/>
   <object id="230" name="fin" gid="8703" x="2150" y="352.667" width="52.3333" height="6"/>
   <object id="265" name="fin" gid="8703" x="1663.5" y="378.667" width="415.833" height="6"/>

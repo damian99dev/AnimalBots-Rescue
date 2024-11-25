@@ -57,7 +57,7 @@ class Level:
         backgtras_layer = tmx_map.get_layer_by_name('Backgtras')
         if backgtras_layer:
             for obj in backgtras_layer:
-                if obj.name in ['izquierda', 'boton', 'peligro', 'mancha', 'estalactitas2', 'yo', 'gemaB', 'gemaM','dino', 'rac', 'compu', 'cajas3', 'caja', 'compu2', 'cosa', 'estalactitas', 'victoria', 'linternal', 'fence', 'barril', 'arbol', 'mig', 'jos', 'dam', 'gre', 'rox', 'nao', 'flechaa', 'flechab','pinchos', 'negro',  'derecha', 'arbu', 'arbust', 'rocab', 'rocag', 'pa', 'st', 'laser', 'laser2','xor',  'laser3', 'fondo', 'picos1', 'naonao', 'picos2', 'picos3']:
+                if obj.name in ['pelon','izquierda', 'boton', 'peligro', 'mancha', 'estalactitas2', 'yo', 'gemaB', 'gemaM','dino', 'rac', 'compu', 'cajas3', 'caja', 'compu2', 'cosa', 'estalactitas', 'victoria', 'linternal', 'fence', 'barril', 'arbol', 'mig', 'jos', 'dam', 'gre', 'rox', 'nao', 'flechaa', 'flechab','pinchos', 'negro',  'derecha', 'arbu', 'arbust', 'rocab', 'rocag', 'pa', 'st', 'laser', 'laser2','xor',  'laser3', 'fondo', 'picos1', 'naonao', 'picos2', 'picos3']:
                     image_path = f'graphics/Background/{obj.name}.png'  # Asegúrate de tener las imágenes en la carpeta 'graphics/Background'
                     object_image = pygame.image.load(image_path).convert_alpha()
                     object_image = pygame.transform.scale(object_image, (obj.width, obj.height))

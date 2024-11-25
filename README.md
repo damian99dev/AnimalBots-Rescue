@@ -45,6 +45,7 @@ Face unique obstacles in every environment designed to keep you on your toes!
 
 ## Running
 Go ahead, you can do this to start this adventure: 
+(Make sure you have the game in your user folder)
 * $ pip install -r requirements.txt
 * $ python main.py
 

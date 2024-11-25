@@ -37,11 +37,11 @@ def play_intro_video(video_path):
 
         frame = cv2.flip(frame, 1)
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        frame = cv2.resize(frame, (1550, 780))
+        frame = cv2.resize(frame, (1500, 780))
         frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
         frame_surface = pygame.surfarray.make_surface(frame)
 
-        # Dibuja el frame en la pantalla
+        # Dibuja el frame en la pantallacapture
         SCREEN.blit(frame_surface, (0, 0))
 
         # Manejo de eventos de Pygame

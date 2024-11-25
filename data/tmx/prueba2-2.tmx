@@ -588,7 +588,7 @@
   <object id="442" name="enemy1" gid="4921" x="3808" y="1248" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="2" name="Objetos">
-  <object id="2" name="player" gid="1" x="288" y="1664" width="32" height="32"/>
+  <object id="2" name="player" gid="1" x="288" y="1696" width="32" height="32"/>
   <object id="146" name="meta" gid="4898" x="4655.88" y="1952.94" width="32" height="32"/>
   <object id="247" name="fin" gid="4917" x="2422" y="1806" width="10.6667" height="158"/>
   <object id="388" name="fin" gid="4917" x="3749.86" y="1919.36" width="18.0909" height="6"/>

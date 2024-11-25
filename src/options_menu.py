@@ -88,8 +88,8 @@ def options():
     # Generar los textos iniciales en el idioma seleccionado
     OPTIONS_TITLE = get_font(145).render(get_text("options_title"), True, "Yellow")
     MUSIC_VOLUME_LABEL = get_font(60).render(get_text("music_volume"), True, "White")
-    OPTIONS_BACK = Button(image=None, pos=(screen_width // 7, screen_height // 7 + 650), 
-                        text_input=get_text("back"), font=get_font(55), base_color="White", hovering_color="#ffef00")
+    OPTIONS_BACK = Button(image=pygame.image.load("assets/images/ui/tabla_back_bt.png"), pos=(screen_width // 7, screen_height // 7 + 650), 
+                        text_input=get_text("back"), font=get_font(50), base_color="#361612", hovering_color="#ffef00")
     
     # Establecer el texto completo de idioma inicial
     language_text = "Español" if current_language == "es" else "English"
@@ -112,7 +112,6 @@ def options():
         # Convierte el frame en una superficie de Pygame y dibújalo en la pantalla
         frame_surface = pygame.surfarray.make_surface(frame)
         SCREEN.blit(frame_surface, (0, 0))
-
 
         OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
 
@@ -147,8 +146,10 @@ def options():
                     # Actualizar textos en el nuevo idioma seleccionado
                     OPTIONS_TITLE = get_font(145).render(get_text("options_title"), True, "Yellow")
                     MUSIC_VOLUME_LABEL = get_font(60).render(get_text("music_volume"), True, "White")
-                    OPTIONS_BACK = Button(image=None, pos=(screen_width // 7, screen_height // 7 + 650), 
-                                        text_input=get_text("back"), font=get_font(55), base_color="White", hovering_color="#ffef00")
+                    OPTIONS_BACK = Button(image=pygame.image.load("assets/images/ui/tabla_back_bt.png"), 
+                                          pos=(screen_width // 7, screen_height // 7 + 650), 
+                                          text_input=get_text("back"), font=get_font(50), 
+                                          base_color="#361612", hovering_color="#ffef00")
             
             # Manejar eventos del slider
             slider.handle_event(event)
